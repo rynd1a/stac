@@ -55,8 +55,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BedPlaceAndRoom.xaml.cs">
+      <DependentUpon>BedPlaceAndRoom.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CreateOrUpdateBedPlace.xaml.cs">
+      <DependentUpon>CreateOrUpdateBedPlace.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CreateOrUpdatePac.xaml.cs">
+      <DependentUpon>CreateOrUpdatePac.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CreateOrUpdateRoom.xaml.cs">
+      <DependentUpon>CreateOrUpdateRoom.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Departs.xaml.cs">
       <DependentUpon>Departs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Employee.xaml.cs">
+      <DependentUpon>Employee.xaml</DependentUpon>
     </Compile>
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -64,8 +79,20 @@
     <Compile Include="Medics.xaml.cs">
       <DependentUpon>Medics.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pacients.xaml.cs">
+      <DependentUpon>Pacients.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Reports.xaml.cs">
       <DependentUpon>Reports.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SerachPac.xaml.cs">
+      <DependentUpon>SerachPac.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StacSluch.xaml.cs">
+      <DependentUpon>StacSluch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TransPac.xaml.cs">
+      <DependentUpon>TransPac.xaml</DependentUpon>
     </Compile>
     <Compile Include="Users.xaml.cs">
       <DependentUpon>Users.xaml</DependentUpon>
@@ -81,7 +108,27 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="BedPlaceAndRoom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreateOrUpdateBedPlace.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreateOrUpdatePac.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreateOrUpdateRoom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Departs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Employee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -93,7 +140,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pacients.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Reports.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SerachPac.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StacSluch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TransPac.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

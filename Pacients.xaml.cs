@@ -10,29 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace stac
 {
     /// <summary>
-    /// Логика взаимодействия для Login.xaml
+    /// Логика взаимодействия для Pacients.xaml
     /// </summary>
-    public partial class Login : Window
+    public partial class Pacients : Page
     {
-        public Login()
+        public Pacients()
         {
             InitializeComponent();
-        }
-
-        private void ButtonLogin_Click(object sender, RoutedEventArgs e)
-        {
-            this.Hide();
-            // Admin admin = new Admin();
-            //admin.Show();
-            Employee employee = new Employee();
-            employee.Show();
-            this.Close();
-            return;
         }
     }
 }

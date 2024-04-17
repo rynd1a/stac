@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -16,33 +15,28 @@ using System.Windows.Shapes;
 namespace stac
 {
     /// <summary>
-    /// Логика взаимодействия для Admin.xaml
+    /// Логика взаимодействия для Employee.xaml
     /// </summary>
-    public partial class Admin : Window
+    public partial class Employee : Window
     {
-        public Admin()
+        public Employee()
         {
             InitializeComponent();
         }
 
-        private void ButUser_Click(object sender, RoutedEventArgs e)
+        private void ButPac_Click(object sender, RoutedEventArgs e)
         {
-            FrameAdmin.Content = new Users();
+            FrameAdmin.Content = new Pacients();
         }
 
-        private void ButDepart_Click(object sender, RoutedEventArgs e)
+        private void ButSluch_Click(object sender, RoutedEventArgs e)
         {
-            FrameAdmin.Content = new Departs();
+            FrameAdmin.Content = new StacSluch();
         }
 
-        private void ButMedic_Click(object sender, RoutedEventArgs e)
+        private void ButPlace_Click(object sender, RoutedEventArgs e)
         {
-            FrameAdmin.Content = new Medics();
-        }
-
-        private void ButReport_Click(object sender, RoutedEventArgs e)
-        {
-            FrameAdmin.Content = new Reports();
+            FrameAdmin.Content = new BedPlaceAndRoom();
         }
 
         private void ButLogout_Click(object sender, RoutedEventArgs e)
