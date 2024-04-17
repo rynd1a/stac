@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -24,14 +25,24 @@ namespace stac
             InitializeComponent();
         }
 
-        private void ButtonUsers_Click(object sender, RoutedEventArgs e)
+        private void ButUser_Click(object sender, RoutedEventArgs e)
         {
-            
+            FrameAdmin.Content = new Users();
         }
 
-        private void Frame_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
+        private void ButDepart_Click(object sender, RoutedEventArgs e)
         {
-            
+            FrameAdmin.Content = new Departs();
+        }
+
+        private void ButMedic_Click(object sender, RoutedEventArgs e)
+        {
+            FrameAdmin.Content = new Medics();
+        }
+
+        private void ButReport_Click(object sender, RoutedEventArgs e)
+        {
+            FrameAdmin.Content = new Reports();
         }
     }
 }

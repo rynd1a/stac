@@ -8,10 +8,10 @@
         Title="Администратор" Height="600" Width="800">
     <Grid>
         <Rectangle HorizontalAlignment="Center" Height="30" Stroke="Black" VerticalAlignment="Top" Width="800" Fill="#FFABABAB"/>
-        <Button x:Name="ButtonUsers" Content="Пользователи" HorizontalAlignment="Left" Height="30" Margin="167,0,0,0" VerticalAlignment="Top" Width="118" Click="ButtonUsers_Click"/>
-        <Button x:Name="ButtonDepart" Content="Отделения" HorizontalAlignment="Left" Height="30" Margin="314,0,0,0" VerticalAlignment="Top" Width="118"/>
-        <Button x:Name="ButtonMedic" Content="Врачи" HorizontalAlignment="Left" Height="30" Margin="489,0,0,0" VerticalAlignment="Top" Width="118"/>
-        <Button x:Name="ButtonReport" Content="Отчет" HorizontalAlignment="Left" Height="30" Margin="627,0,0,0" VerticalAlignment="Top" Width="118"/>
-        <Frame Content="Frame" Navigated="Frame_Navigated"/>
+        <Button x:Name="ButUser" Content="Пользователи" HorizontalAlignment="Left" Height="30" Margin="167,0,0,0" VerticalAlignment="Top" Width="118" Click="ButUser_Click"/>
+        <Button x:Name="ButDepart" Content="Отделения" HorizontalAlignment="Left" Height="30" Margin="314,0,0,0" VerticalAlignment="Top" Width="118" Click="ButDepart_Click"/>
+        <Button x:Name="ButMedic" Content="Врачи" HorizontalAlignment="Left" Height="30" Margin="489,0,0,0" VerticalAlignment="Top" Width="118" Click="ButMedic_Click"/>
+        <Button x:Name="ButReport" Content="Отчет" HorizontalAlignment="Left" Height="30" Margin="627,0,0,0" VerticalAlignment="Top" Width="118" Click="ButReport_Click"/>
+        <Frame x:Name="FrameAdmin" Background="AliceBlue" Margin="0,35,0,0" NavigationUIVisibility="Hidden"></Frame>
     </Grid>
 </Window>
