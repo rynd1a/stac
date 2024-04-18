@@ -5,9 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:stac"
         mc:Ignorable="d"
-        Title="Login" Height="450" Width="800">
-    <Grid>
-        <Button x:Name="ButtonLogin" Content="Войти" HorizontalAlignment="Left" Margin="343,291,0,0" VerticalAlignment="Top" Height="39" Width="85" Click="ButtonLogin_Click"/>
+        Title="Авторизация" Height="600" Width="800">
+    <Grid Background="#F4F4F4">
+        <Rectangle HorizontalAlignment="Center" Height="313" VerticalAlignment="Center" Width="352" Fill="White" RadiusY="15" RadiusX="15" />
+        <Button x:Name="ButtonLogin" FontSize="15" Content="Войти" HorizontalAlignment="Center" Margin="0,368,0,0" VerticalAlignment="Top" Foreground="White" Height="36" Width="124" Click="ButtonLogin_Click" Background="#34495E" />
+        <Label Content="Авторизация" HorizontalAlignment="Center" Margin="0,159,0,0" VerticalAlignment="Top" FontSize="25"/>
+        <TextBox HorizontalAlignment="Center" Margin="0,289,0,0" FontSize="15" Background="#D9D9D9" Foreground="#747373" TextWrapping="Wrap" Text="Пароль" VerticalAlignment="Top" Width="290" Height="30" />
+        <TextBox HorizontalAlignment="Center" Margin="0,217,0,0" FontSize="15" Background="#D9D9D9" Foreground="#747373" TextWrapping="Wrap" Text="Логин" VerticalAlignment="Top" Width="290" Height="30" />
+        <PasswordBox HorizontalAlignment="Center" Margin="0,289,0,0" VerticalAlignment="Top" Width="290" Background='#D9D9D9' Height="30"/>
 
     </Grid>
 </Window>
