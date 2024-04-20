@@ -8,8 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Medics">
 
-    <Grid Background="Aqua">
-        <TextBlock FontSize="35">Врачи</TextBlock>
-
+    <Grid Background="#F4F4F4">
+        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}"/>
     </Grid>
 </Page>
