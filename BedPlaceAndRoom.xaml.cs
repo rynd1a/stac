@@ -24,5 +24,19 @@ namespace stac
         {
             InitializeComponent();
         }
+
+        private void ButtonNewRoom_Click(object sender, RoutedEventArgs e)
+        {
+            CreateOrUpdateRoom createOrUpdateRoom = new CreateOrUpdateRoom();
+            createOrUpdateRoom.ShowDialog();
+            return;
+        }
+
+        private void ButtonNewPlace_Click(object sender, RoutedEventArgs e)
+        {
+            CreateOrUpdateBedPlace createOrUpdateBedPlace = new CreateOrUpdateBedPlace();
+            createOrUpdateBedPlace.ShowDialog();
+            return;
+        }
     }
 }

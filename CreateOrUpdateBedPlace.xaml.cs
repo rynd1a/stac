@@ -10,7 +10,6 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace stac
@@ -18,11 +17,16 @@ namespace stac
     /// <summary>
     /// Логика взаимодействия для CreateOrUpdateBedPlace.xaml
     /// </summary>
-    public partial class CreateOrUpdateBedPlace : Page
+    public partial class CreateOrUpdateBedPlace : Window
     {
         public CreateOrUpdateBedPlace()
         {
             InitializeComponent();
+        }
+
+        private void ButtonClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

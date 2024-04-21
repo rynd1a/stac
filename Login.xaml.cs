@@ -26,13 +26,31 @@ namespace stac
 
         private void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
-            // Admin admin = new Admin();
-            // admin.Show();
-            Employee employee = new Employee();
-            employee.Show();
-            this.Close();
+            if (loginTextBox.Text == "админ")
+            {
+                this.Hide();
+                Admin admin = new Admin();
+                admin.Show();
+                this.Close();
+            }
+            else
+            {
+                this.Hide();
+                Employee employee = new Employee();
+                employee.Show();
+                this.Close();
+            }
             return;
+        }
+
+        private void loginTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            loginTextBox.Text = "";
+        }
+
+        private void PasswordBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            pass.Content = "";
         }
     }
 }

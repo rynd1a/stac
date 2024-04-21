@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:stac"
         mc:Ignorable="d"
-        Title="Пациент" Height="450" Width="800">
+        Title="Пациент" Height="600" Width="800">
     <Grid Background="#F4F4F4">
         <TextBox HorizontalAlignment="Left" Margin="31,11,0,0" FontSize="15" Background="#D9D9D9" Foreground="#747373" TextWrapping="Wrap" Text="Номер" VerticalAlignment="Top" Width="290" Height="30" />
         <TextBox HorizontalAlignment="Left" Margin="31,53,0,0" FontSize="15" Background="#D9D9D9" Foreground="#747373" TextWrapping="Wrap" Text="Фамилия" VerticalAlignment="Top" Width="290" Height="30" />

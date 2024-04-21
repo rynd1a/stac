@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:stac"
         mc:Ignorable="d"
-        Title="Стационарный случай" Height="450" Width="800">
+        Title="Стационарный случай" Height="600" Width="800">
     <Grid Background="#F4F4F4">
         <TextBox HorizontalAlignment="Left" Margin="126,30,0,0" FontSize="15" Background="#D9D9D9" Foreground="#747373" TextWrapping="Wrap" Text="Пациент" VerticalAlignment="Top" Width="290" Height="30" IsReadOnly="True"/>
         <TextBox HorizontalAlignment="Left" Margin="126,158,0,0" FontSize="15" Background="#D9D9D9" Foreground="#747373" TextWrapping="Wrap" Text="Диагноз" VerticalAlignment="Top" Width="290" Height="30" />
