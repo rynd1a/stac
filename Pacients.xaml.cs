@@ -24,5 +24,12 @@ namespace stac
         {
             InitializeComponent();
         }
+
+        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        {
+            CreateorUpdatePac createorUpdatePac = new CreateorUpdatePac();
+            createorUpdatePac.ShowDialog();
+            return;
+        }
     }
 }

@@ -24,5 +24,12 @@ namespace stac
         {
             InitializeComponent();
         }
+
+        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        {
+            CreateOrUpdateStacSluch createOrUpdateStacSluch = new CreateOrUpdateStacSluch();
+            createOrUpdateStacSluch.ShowDialog();
+            return;
+        }
     }
 }

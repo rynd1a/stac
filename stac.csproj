@@ -61,11 +61,14 @@
     <Compile Include="CreateOrUpdateBedPlace.xaml.cs">
       <DependentUpon>CreateOrUpdateBedPlace.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CreateOrUpdatePac.xaml.cs">
-      <DependentUpon>CreateOrUpdatePac.xaml</DependentUpon>
+    <Compile Include="CreateorUpdatePac.xaml.cs">
+      <DependentUpon>CreateorUpdatePac.xaml</DependentUpon>
     </Compile>
     <Compile Include="CreateOrUpdateRoom.xaml.cs">
       <DependentUpon>CreateOrUpdateRoom.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CreateOrUpdateStacSluch.xaml.cs">
+      <DependentUpon>CreateOrUpdateStacSluch.xaml</DependentUpon>
     </Compile>
     <Compile Include="Departs.xaml.cs">
       <DependentUpon>Departs.xaml</DependentUpon>
@@ -85,14 +88,14 @@
     <Compile Include="Reports.xaml.cs">
       <DependentUpon>Reports.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SerachPac.xaml.cs">
-      <DependentUpon>SerachPac.xaml</DependentUpon>
+    <Compile Include="SearchPac.xaml.cs">
+      <DependentUpon>SearchPac.xaml</DependentUpon>
     </Compile>
     <Compile Include="StacSluch.xaml.cs">
       <DependentUpon>StacSluch.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TransPac.xaml.cs">
-      <DependentUpon>TransPac.xaml</DependentUpon>
+    <Compile Include="TransfPac.xaml.cs">
+      <DependentUpon>TransfPac.xaml</DependentUpon>
     </Compile>
     <Compile Include="Users.xaml.cs">
       <DependentUpon>Users.xaml</DependentUpon>
@@ -116,11 +119,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CreateOrUpdatePac.xaml">
+    <Page Include="CreateorUpdatePac.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CreateOrUpdateRoom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreateOrUpdateStacSluch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -148,7 +155,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SerachPac.xaml">
+    <Page Include="SearchPac.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -156,7 +163,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TransPac.xaml">
+    <Page Include="TransfPac.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

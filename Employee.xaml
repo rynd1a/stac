@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:stac"
         mc:Ignorable="d"
-        Title="Employee" Height="450" Width="800">
-    <Grid>
-        <Rectangle HorizontalAlignment="Center" Height="30" Stroke="Black" VerticalAlignment="Top" Width="800" Fill="#FFABABAB"/>
-        <Button x:Name="ButPac" Content="Пациенты" HorizontalAlignment="Left" Height="30" Margin="49,0,0,0" VerticalAlignment="Top" Width="118" Click="ButPac_Click" />
-        <Button x:Name="ButSluch" Content="Стационарные случаи" HorizontalAlignment="Left" Height="30" Margin="185,0,0,0" VerticalAlignment="Top" Width="118" RenderTransformOrigin="-0.025,0.668" Click="ButSluch_Click"/>
-        <Button x:Name="ButPlace" Content="Палаты и койки" HorizontalAlignment="Left" Height="30" Margin="351,0,0,0" VerticalAlignment="Top" Width="118" Click="ButPlace_Click" />
-        <Button x:Name="ButLogout" Content="Выход" HorizontalAlignment="Left" Height="30" Margin="490,0,0,0" VerticalAlignment="Top" Width="118" Click="ButLogout_Click" />
-        <Frame x:Name="FrameAdmin" Background="AliceBlue" Margin="0,35,0,0" NavigationUIVisibility="Hidden"></Frame>
+        Title="Сотрудник" Height="450" Width="800">
+    <Grid Background="#F4F4F4">
+        <Rectangle HorizontalAlignment="Center" Height="30" Stroke="#D9D9D9" VerticalAlignment="Top" Width="800" Fill="#D9D9D9"/>
+        <Button x:Name="ButPac" Content="Пациенты" HorizontalAlignment="Left" Height="30" Margin="77,0,0,0" VerticalAlignment="Top" Width="118" Click="ButPac_Click"  BorderThickness="0" Background="#D9D9D9"/>
+        <Button x:Name="ButSluch" Content="Стационарные случаи" HorizontalAlignment="Left" Height="30" Margin="239,0,0,0" VerticalAlignment="Top" Width="131" Background="#D9D9D9" RenderTransformOrigin="-0.025,0.668" Click="ButSluch_Click" BorderThickness="0"/>
+        <Button x:Name="ButPlace" Content="Палаты и койки" HorizontalAlignment="Left" Height="30" Margin="420,0,0,0" VerticalAlignment="Top" Width="118" Click="ButPlace_Click" Background="#D9D9D9"  BorderThickness="0" RenderTransformOrigin="1.136,0.435"/>
+        <Button x:Name="ButLogout" Content="Выход" HorizontalAlignment="Left" Height="30" Margin="571,0,0,0" VerticalAlignment="Top" Width="118" Click="ButLogout_Click"  Background="#D9D9D9" BorderThickness="0"/>
+        <Frame x:Name="FrameEmployee" Background="#F4F4F4" Margin="0,35,0,0" NavigationUIVisibility="Hidden"></Frame>
     </Grid>
 </Window>

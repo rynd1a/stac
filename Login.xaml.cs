@@ -27,10 +27,10 @@ namespace stac
         private void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
-             Admin admin = new Admin();
-            admin.Show();
-           // Employee employee = new Employee();
-           // employee.Show();
+            // Admin admin = new Admin();
+            // admin.Show();
+            Employee employee = new Employee();
+            employee.Show();
             this.Close();
             return;
         }

@@ -1,14 +1,32 @@
-﻿<Page x:Class="stac.CreateOrUpdatePac"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:stac"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="CreateOrUpdatePac">
-
-    <Grid Background="Aqua">
-        <TextBlock FontSize="35">Редактирование и добавление пациента</TextBlock>
+﻿<Window x:Class="stac.CreateorUpdatePac"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:stac"
+        mc:Ignorable="d"
+        Title="Пациент" Height="450" Width="800">
+    <Grid Background="#F4F4F4">
+        <TextBox HorizontalAlignment="Left" Margin="31,11,0,0" FontSize="15" Background="#D9D9D9" Foreground="#747373" TextWrapping="Wrap" Text="Номер" VerticalAlignment="Top" Width="290" Height="30" />
+        <TextBox HorizontalAlignment="Left" Margin="31,53,0,0" FontSize="15" Background="#D9D9D9" Foreground="#747373" TextWrapping="Wrap" Text="Фамилия" VerticalAlignment="Top" Width="290" Height="30" />
+        <TextBox HorizontalAlignment="Left" Margin="31,99,0,0" FontSize="15" Background="#D9D9D9" Foreground="#747373" TextWrapping="Wrap" Text="Имя" VerticalAlignment="Top" Width="290" Height="30" />
+        <TextBox HorizontalAlignment="Left" Margin="31,147,0,0" FontSize="15" Background="#D9D9D9" Foreground="#747373" TextWrapping="Wrap" Text="Отчество" VerticalAlignment="Top" Width="290" Height="30" />
+        <DatePicker HorizontalAlignment="Left" Margin="31,184,0,0" VerticalAlignment="Top" Width="290" Background="#D9D9D9" Foreground="#747373" Height="30"/>
+        <ComboBox HorizontalAlignment="Left" Margin="31,238,0,0" VerticalAlignment="Top" Width="290" Background="#D9D9D9" Foreground="#747373" Height="30"/>
+        <TextBox HorizontalAlignment="Left" Margin="31,279,0,0" FontSize="15" Background="#D9D9D9" Foreground="#747373" TextWrapping="Wrap" Text="Номер телефона" VerticalAlignment="Top" Width="290" Height="30" />
+        <TextBox HorizontalAlignment="Left" Margin="31,326,0,0" FontSize="15" Background="#D9D9D9" Foreground="#747373" TextWrapping="Wrap" Text="Электронная почта" VerticalAlignment="Top" Width="290" Height="30" />
+        <TextBox HorizontalAlignment="Left" Margin="31,369,0,0" FontSize="15" Background="#D9D9D9" Foreground="#747373" TextWrapping="Wrap" Text="Примечание" VerticalAlignment="Top" Width="290" Height="30" />
+        <Button x:Name="ButtonSave" FontSize="15" Content="Сохранить данные" HorizontalAlignment="Left" Margin="424,377,0,0" VerticalAlignment="Top" Foreground="White" Height="36" Width="160" Background="#34495E" />
+        <Button x:Name="ButtonDel" FontSize="15" Content="Удалить данные" HorizontalAlignment="Left" Margin="596,377,0,0" VerticalAlignment="Top" Foreground="White" Height="36" Width="160" Background="#34495E" />
+        <Rectangle HorizontalAlignment="Left" Height="135" Margin="434,14,0,0" Stroke="#D9D9D9" VerticalAlignment="Top" Width="300" Fill="#D9D9D9" />
+        <Label Content="Адрес" HorizontalAlignment="Left" Margin="434,15,0,0" VerticalAlignment="Top" Foreground="#747373"/>
+        <DataGrid d:ItemsSource="{d:SampleData ItemCount=1}" Margin="440,46,72,320"/>
+        <Button x:Name="ButtonAddAdr" FontSize="15" Content="Добавить" HorizontalAlignment="Left" Margin="440,119,0,0" VerticalAlignment="Top" Foreground="White" Height="23" Width="104" Background="#34495E" />
+        <Button x:Name="ButtonDelAdr" FontSize="15" Content="Удалить" HorizontalAlignment="Left" Margin="624,119,0,0" VerticalAlignment="Top" Foreground="White" Height="23" Width="104" Background="#34495E" />
+        <Rectangle HorizontalAlignment="Left" Height="135" Margin="434,189,0,0" Stroke="#D9D9D9" VerticalAlignment="Top" Width="300" Fill="#D9D9D9" />
+        <Label Content="Документ" HorizontalAlignment="Left" Margin="434,190,0,0" VerticalAlignment="Top" Foreground="#747373"/>
+        <DataGrid d:ItemsSource="{d:SampleData ItemCount=1}" Margin="440,221,72,145"/>
+        <Button x:Name="ButtonAddDoc" FontSize="15" Content="Добавить" HorizontalAlignment="Left" Margin="440,294,0,0" VerticalAlignment="Top" Foreground="White" Height="23" Width="104" Background="#34495E" />
+        <Button x:Name="ButtonDelDoc" FontSize="15" Content="Удалить" HorizontalAlignment="Left" Margin="624,294,0,0" VerticalAlignment="Top" Foreground="White" Height="23" Width="104" Background="#34495E" />
     </Grid>
-</Page>
+</Window>

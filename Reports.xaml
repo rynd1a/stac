@@ -14,5 +14,6 @@
         <DatePicker HorizontalAlignment="Left" Margin="550,34,0,0" VerticalAlignment="Top" Width="160" RenderTransformOrigin="4.413,0.721"/>
         <Label Foreground="#747373"  Content="Дата начала формирования" HorizontalAlignment="Left" Margin="102,8,0,0" VerticalAlignment="Top"/>
         <Label Foreground="#747373"  Content="Дата окончания формирования" HorizontalAlignment="Left" Margin="550,10,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="ButtonPrint" FontSize="15" Content="Печать" HorizontalAlignment="Center" Margin="0,404,0,0" VerticalAlignment="Top" Foreground="White" Height="36" Width="124" Background="#34495E" />
     </Grid>
 </Page>

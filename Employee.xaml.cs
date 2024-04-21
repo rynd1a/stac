@@ -26,17 +26,17 @@ namespace stac
 
         private void ButPac_Click(object sender, RoutedEventArgs e)
         {
-            FrameAdmin.Content = new Pacients();
+            FrameEmployee.Content = new Pacients();
         }
 
         private void ButSluch_Click(object sender, RoutedEventArgs e)
         {
-            FrameAdmin.Content = new StacSluch();
+            FrameEmployee.Content = new StacSluch();
         }
 
         private void ButPlace_Click(object sender, RoutedEventArgs e)
         {
-            FrameAdmin.Content = new BedPlaceAndRoom();
+            FrameEmployee.Content = new BedPlaceAndRoom();
         }
 
         private void ButLogout_Click(object sender, RoutedEventArgs e)
@@ -47,5 +47,6 @@ namespace stac
             this.Close();
             return;
         }
+        
     }
 }

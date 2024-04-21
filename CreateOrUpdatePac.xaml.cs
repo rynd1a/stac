@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace stac
 {
     /// <summary>
-    /// Логика взаимодействия для CreateOrUpdatePac.xaml
+    /// Логика взаимодействия для CreateorUpdatePac.xaml
     /// </summary>
-    public partial class CreateOrUpdatePac : Page
+    public partial class CreateorUpdatePac : Window
     {
-        public CreateOrUpdatePac()
+        public CreateorUpdatePac()
         {
             InitializeComponent();
         }

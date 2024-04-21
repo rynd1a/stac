@@ -10,19 +10,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace stac
 {
     /// <summary>
-    /// Логика взаимодействия для TransPac.xaml
+    /// Логика взаимодействия для TransfPac.xaml
     /// </summary>
-    public partial class TransPac : Page
+    public partial class TransfPac : Window
     {
-        public TransPac()
+        public TransfPac()
         {
             InitializeComponent();
+        }
+
+        private void ButtonDelDoc_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
