@@ -64,6 +64,7 @@ namespace stac
         {
             Connect.Table_Fill("User", "select id as Номер, login as Логин, password as Пароль, " +
                 "type as Тип from users order by id");
+            Connect.Table_Fill("Depart", "select id as Номер, name as Наименование from department");
         }
     }
 }

@@ -31,14 +31,8 @@ namespace stac
             UsersTable.ItemsSource = Connect.ds.Tables["User"].DefaultView;
             UsersTable.AutoGenerateColumns = true;
             UsersTable.HeadersVisibility = DataGridHeadersVisibility.Column;
-            // UsersTable.Columns[0].Visibility = Visibility.Hidden;
             UsersTable.CanUserAddRows = false;
             UsersTable.Columns[0].IsReadOnly = true;
-        }
-
-        private void UsersTable_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
-        {
-            
         }
 
         private void UsersTable_KeyUp(object sender, KeyEventArgs e)

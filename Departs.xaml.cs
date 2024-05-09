@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,5 +25,79 @@ namespace stac
         {
             InitializeComponent();
         }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            DepartsTable.ItemsSource = Connect.ds.Tables["Depart"].DefaultView;
+            DepartsTable.AutoGenerateColumns = true;
+            DepartsTable.HeadersVisibility = DataGridHeadersVisibility.Column;
+            DepartsTable.CanUserAddRows = false;
+            DepartsTable.Columns[0].IsReadOnly = true;
+        }
+
+        private void DepartsTable_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                string result;
+                string sql;
+                DataRowView row = (DataRowView)DepartsTable.SelectedItems[0];
+                int id = DepartsTable.SelectedIndex;
+                MessageBoxButton buttons = MessageBoxButton.YesNo;
+
+                if (id == -1) MessageBox.Show("Выберите строку!");
+
+                result = MessageBox.Show("Применить изменения?", "Изменения", buttons).ToString();
+                if (result == "No") return;
+                else if (result == "Yes")
+                {
+                    if (row["Номер"].ToString() != "")
+                    {
+                        sql = "update department set name='" +
+                        row["Наименование"] + 
+                        "' where id = " + row["Номер"];
+
+                        if (!Connect.Modification_Execute(sql))
+                            return;
+                        Connect.ds.Tables["Depart"].Rows[id].ItemArray = new object[] { row["Номер"], row["Наименование"] };
+                    }
+                    else
+                    {
+                        sql = "insert into department(name) values('" + row["Наименование"] + "')";
+                        if (!Connect.Modification_Execute(sql))
+                            return;
+                        Connect.ds.Tables["Depart"].Rows[id].ItemArray = new object[] { row["Номер"], row["Наименование"] };
+                    }
+                }
+            }
+        }
+        private void ButtonDel_Click(object sender, RoutedEventArgs e)
+        {
+            int id = DepartsTable.SelectedIndex;
+            if (id == -1)
+            {
+                MessageBox.Show("Выберите строку для удаления!");
+                return;
+            }
+
+            string result;
+            string sql = "";
+            MessageBoxButton buttons = MessageBoxButton.YesNo;
+            result = MessageBox.Show("Вы точно хотите удалить запись?", "Удаление", buttons).ToString();
+            if (result == "No") return;
+            else if (result == "Yes")
+            {
+                sql = "delete from department where id = " + id;
+                if (!Connect.Modification_Execute(sql))
+                    return;
+                Connect.ds.Tables["Depart"].Rows.RemoveAt(id);
+            }
+        }
+
+        private void ButtonNew_Click(object sender, RoutedEventArgs e)
+        {
+            Connect.ds.Tables["Depart"].Rows.Add(new object[] { });
+        }
+
     }
 }
