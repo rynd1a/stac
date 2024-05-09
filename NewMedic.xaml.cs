@@ -63,6 +63,26 @@ namespace stac
                 Fam.Text = Connect.ds.Tables["UpdMedic"].Rows[0]["fam"].ToString().Replace(" ", "");
                 Patr.Text = Connect.ds.Tables["UpdMedic"].Rows[0]["patr"].ToString().Replace(" ", "");
             }
+            else
+            {
+                ButtonDel.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void ButtonDel_Click(object sender, RoutedEventArgs e)
+        {
+            string result;
+            string sql;
+            MessageBoxButton buttons = MessageBoxButton.YesNo;
+            result = MessageBox.Show("Вы точно хотите удалить запись?", "Удаление", buttons).ToString();
+            if (result == "No") return;
+            else if (result == "Yes")
+            {
+                sql = "delete from medic where id = " + id;
+                if (!Connect.Modification_Execute(sql))
+                    return;
+                Connect.ds.Tables["Medic"].Rows.RemoveAt(id);
+            }
         }
 
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
@@ -88,6 +108,14 @@ namespace stac
                     if (!Connect.Modification_Execute(sql))
                         return;
                     //Connect.ds.Tables["Medic"].Rows[id].ItemArray = new object[] { id, Fam.Text, Name.Text, Patr.Text, id_dep };
+                    this.Close();
+                }
+                else
+                {
+                    sql = "insert into medic(fam, name, patr, department_id) values('" + Fam.Text.Replace(" ", "") +
+                        "', '" + Name.Text.Replace(" ", "") + "', '" + Patr.Text.Replace(" ", "") + "', " + id_dep + ")";
+                    if (!Connect.Modification_Execute(sql))
+                        return;
                     this.Close();
                 }
             }

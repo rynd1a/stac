@@ -9,14 +9,13 @@
       Title="Medics" Loaded="Page_Loaded">
 
     <Grid Background="#F4F4F4">
-        <DataGrid x:Name="MedicsTable"  Margin="50,100,50,100"  KeyUp="MedicsTable_KeyUp" MaxColumnWidth="150" GotFocus="MedicsTable_GotFocus">
+        <DataGrid x:Name="MedicsTable"  Margin="50,100,50,20"  KeyUp="MedicsTable_KeyUp" MaxColumnWidth="150" GotFocus="MedicsTable_GotFocus">
             <DataGrid.ItemContainerStyle>
                 <Style TargetType="DataGridRow">
                     <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
                 </Style>
             </DataGrid.ItemContainerStyle>
         </DataGrid>
-        <Button x:Name="ButtonDel" FontSize="15" Content="Удалить" HorizontalAlignment="Left" Margin="429,30,0,0" VerticalAlignment="Top" Foreground="White" Height="30" Width="120" Background="#34495E" RenderTransformOrigin="0.067,-7.1" Click="ButtonDel_Click" />
-        <Button x:Name="ButtonNew" FontSize="15" Content="Добавить" HorizontalAlignment="Left" Margin="245,30,0,0" VerticalAlignment="Top" Foreground="White" Height="30" Width="120" Background="#34495E" Click="ButtonNew_Click" />
+        <Button x:Name="ButtonNew" FontSize="15" Content="Добавить" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" Foreground="White" Height="30" Width="120" Background="#34495E" Click="ButtonNew_Click" />
     </Grid>
 </Page>

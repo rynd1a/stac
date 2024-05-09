@@ -98,28 +98,6 @@ namespace stac
                 }
             }
         }
-        private void ButtonDel_Click(object sender, RoutedEventArgs e)
-        {
-            int id = MedicsTable.SelectedIndex;
-            if (id == -1)
-            {
-                MessageBox.Show("Выберите строку для удаления!");
-                return;
-            }
-
-            string result;
-            string sql = "";
-            MessageBoxButton buttons = MessageBoxButton.YesNo;
-            result = MessageBox.Show("Вы точно хотите удалить запись?", "Удаление", buttons).ToString();
-            if (result == "No") return;
-            else if (result == "Yes")
-            {
-                sql = "delete from medic where id = " + id;
-                if (!Connect.Modification_Execute(sql))
-                    return;
-                Connect.ds.Tables["Medic"].Rows.RemoveAt(id);
-            }
-        }
 
         private void ButtonNew_Click(object sender, RoutedEventArgs e)
         {
