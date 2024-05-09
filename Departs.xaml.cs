@@ -28,6 +28,7 @@ namespace stac
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            Connect.Table_Fill("Depart", "select id as Номер, name as Наименование from department");
             DepartsTable.ItemsSource = Connect.ds.Tables["Depart"].DefaultView;
             DepartsTable.AutoGenerateColumns = true;
             DepartsTable.HeadersVisibility = DataGridHeadersVisibility.Column;
@@ -59,14 +60,14 @@ namespace stac
 
                         if (!Connect.Modification_Execute(sql))
                             return;
-                        Connect.ds.Tables["Depart"].Rows[id].ItemArray = new object[] { row["Номер"], row["Наименование"] };
+                        NavigationService.Navigate(new Departs());
                     }
                     else
                     {
                         sql = "insert into department(name) values('" + row["Наименование"] + "')";
                         if (!Connect.Modification_Execute(sql))
                             return;
-                        Connect.ds.Tables["Depart"].Rows[id].ItemArray = new object[] { row["Номер"], row["Наименование"] };
+                        NavigationService.Navigate(new Departs());
                     }
                 }
             }

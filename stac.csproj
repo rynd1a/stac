@@ -132,6 +132,9 @@
     <Compile Include="Medics.xaml.cs">
       <DependentUpon>Medics.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NewMedic.xaml.cs">
+      <DependentUpon>NewMedic.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pacients.xaml.cs">
       <DependentUpon>Pacients.xaml</DependentUpon>
     </Compile>
@@ -194,6 +197,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Medics.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NewMedic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

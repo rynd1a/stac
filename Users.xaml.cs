@@ -59,7 +59,7 @@ namespace stac
 
                         if (!Connect.Modification_Execute(sql))
                             return;
-                        Connect.ds.Tables["User"].Rows[id].ItemArray = new object[] { row["Номер"], row["Логин"], row["Пароль"], row["Тип"] };
+                        NavigationService.Navigate(new Users());
                     }
                     else
                     {
@@ -68,7 +68,7 @@ namespace stac
                             "')";
                         if (!Connect.Modification_Execute(sql))
                             return;
-                        Connect.ds.Tables["User"].Rows[id].ItemArray = new object[] { row["Номер"], row["Логин"], row["Пароль"], row["Тип"] };
+                        NavigationService.Navigate(new Users());
                     }
                 }
             }
