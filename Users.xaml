@@ -6,9 +6,11 @@
       xmlns:local="clr-namespace:stac"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="800"
-      Title="Users">
+      Title="Users" Loaded="Page_Loaded">
 
     <Grid Background="#F4F4F4">
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}"/>
+        <DataGrid x:Name="UsersTable" d:ItemsSource="{d:SampleData ItemCount=4}" Margin="205,100,205,200" AutoGenerateColumns="False" KeyUp="UsersTable_KeyUp" />
+        <Button x:Name="ButtonDel" FontSize="15" Content="Удалить" HorizontalAlignment="Left" Margin="429,30,0,0" VerticalAlignment="Top" Foreground="White" Height="30" Width="120" Background="#34495E" RenderTransformOrigin="0.067,-7.1" Click="ButtonDel_Click" />
+        <Button x:Name="ButtonNew" FontSize="15" Content="Добавить" HorizontalAlignment="Left" Margin="245,30,0,0" VerticalAlignment="Top" Foreground="White" Height="30" Width="120" Background="#34495E" Click="ButtonNew_Click" />
     </Grid>
 </Page>

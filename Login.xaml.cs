@@ -25,9 +25,9 @@ namespace stac
         {
             for (int i = 0; i < Connect.ds.Tables["User"].Rows.Count; i++)
             {
-                if ((loginTextBox.Text == Connect.ds.Tables["User"].Rows[i][0].ToString()) && (PasswordBox.Password == Connect.ds.Tables["User"].Rows[i][1].ToString()))
+                if ((loginTextBox.Text == Connect.ds.Tables["User"].Rows[i]["Логин"].ToString()) && (PasswordBox.Password == Connect.ds.Tables["User"].Rows[i]["Пароль"].ToString()))
                 {
-                    if (Connect.ds.Tables["User"].Rows[i][2].ToString() == "Администратор")
+                    if (Connect.ds.Tables["User"].Rows[i]["Тип"].ToString() == "Администратор")
                     {
                         this.Hide();
                         Admin admin = new Admin();
@@ -35,7 +35,7 @@ namespace stac
                         this.Close();
                         return;
                     }
-                    else if (Connect.ds.Tables["User"].Rows[i][2].ToString() == "Врач")
+                    else if (Connect.ds.Tables["User"].Rows[i]["Тип"].ToString() == "Врач")
                     {
                         this.Hide();
                         Employee employee = new Employee();
@@ -62,7 +62,8 @@ namespace stac
 
         private void loginTextBox_Loaded(object sender, RoutedEventArgs e)
         {
-            Connect.Table_Fill("User", "select login, password, type from users");
+            Connect.Table_Fill("User", "select id as Номер, login as Логин, password as Пароль, " +
+                "type as Тип from users order by id");
         }
     }
 }
