@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace stac
 {
-    /// <summary>
-    /// Логика взаимодействия для Login.xaml
-    /// </summary>
     public partial class Login : Window
     {
         public Login()
@@ -26,21 +23,31 @@ namespace stac
 
         private void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
-            if (loginTextBox.Text == "админ")
+            for (int i = 0; i < Connect.ds.Tables["User"].Rows.Count; i++)
             {
-                this.Hide();
-                Admin admin = new Admin();
-                admin.Show();
-                this.Close();
+                if ((loginTextBox.Text == Connect.ds.Tables["User"].Rows[i][0].ToString()) && (PasswordBox.Password == Connect.ds.Tables["User"].Rows[i][1].ToString()))
+                {
+                    if (Connect.ds.Tables["User"].Rows[i][2].ToString() == "Администратор")
+                    {
+                        this.Hide();
+                        Admin admin = new Admin();
+                        admin.Show();
+                        this.Close();
+                        return;
+                    }
+                    else if (Connect.ds.Tables["User"].Rows[i][2].ToString() == "Врач")
+                    {
+                        this.Hide();
+                        Employee employee = new Employee();
+                        employee.Show();
+                        this.Close();
+                        return;
+
+                    }
+                }
             }
-            else
-            {
-                this.Hide();
-                Employee employee = new Employee();
-                employee.Show();
-                this.Close();
-            }
-            return;
+            MessageBox.Show("Неверно введены логин или пароль!", "Ошибка");
+            PasswordBox.Password = "";
         }
 
         private void loginTextBox_GotFocus(object sender, RoutedEventArgs e)
@@ -51,6 +58,11 @@ namespace stac
         private void PasswordBox_GotFocus(object sender, RoutedEventArgs e)
         {
             pass.Content = "";
+        }
+
+        private void loginTextBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            Connect.Table_Fill("User", "select login, password, type from users");
         }
     }
 }

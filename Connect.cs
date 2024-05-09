@@ -38,17 +38,12 @@ namespace stac
             }
             catch (NpgsqlException)
             {
-                MessageBox.Show("Обновление базы данных не было выполнено либо из-за некорректно указанных" +
-                    " обновляемых данных  либо отсутствующих, но при этом обязательных!!!", "Ошибка");
+                MessageBox.Show("Обновление базы данных не было выполнено из-за некорректно указанных" +
+                    " обновляемых данных либо отсутствующих, но при этом обязательных!!!", "Ошибка");
                 connection.Close(); return false;
             }
             connection.Close();
             return true;
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-           
         }
     }
 }
