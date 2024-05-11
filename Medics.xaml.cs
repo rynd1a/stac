@@ -64,8 +64,9 @@ namespace stac
 
         private void ButtonDel_Click(object sender, RoutedEventArgs e)
         {
-            int id = MedicsTable.SelectedIndex;
-            if (id == -1)
+            int index = MedicsTable.SelectedIndex;
+            id_vrach = Convert.ToInt32(Connect.ds.Tables["Medic"].Rows[index]["Номер"]);
+            if (id_vrach == -1)
             {
                 MessageBox.Show("Выберите строку для удаления!");
                 return;
@@ -77,9 +78,9 @@ namespace stac
             if (result == "No") return;
             else if (result == "Yes")
             {
-                string sql = "delete from medic where id = " + id;
+                string sql = "delete from medic where id = " + id_vrach;
                 if (!Connect.Modification_Execute(sql)) return;
-                Connect.ds.Tables["Medic"].Rows.RemoveAt(id);
+                Connect.ds.Tables["Medic"].Rows.RemoveAt(index);
             }
         }
     }

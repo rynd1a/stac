@@ -76,6 +76,8 @@ namespace stac
             Note.Text = "Примечание";
 
             Pacients.id_pac = -1;
+            id_adr = -1;    
+            id_doc = -1;    
         }
 
         private void Table_Fill()
@@ -147,10 +149,13 @@ namespace stac
 
         private void ButtonAddAdr_Click(object sender, RoutedEventArgs e)
         {
-            if (Connect.ds.Tables["UpdAdr"].Rows.Count == 2)
+            if (Pacients.getCurrentRowNumber() != -1)
             {
-                MessageBox.Show("Пациент не может иметь более двух типов адресов.", "Ошибка");
-                return;
+                if (Connect.ds.Tables["UpdAdr"].Rows.Count == 2)
+                {
+                    MessageBox.Show("Пациент не может иметь более двух типов адресов.", "Ошибка");
+                    return;
+                }
             }
 
             PacAdr pacAdr = new PacAdr();
@@ -161,16 +166,55 @@ namespace stac
 
         private void ButtonAddDoc_Click(object sender, RoutedEventArgs e)
         {
-            if (Connect.ds.Tables["UpdDoc"].Rows.Count == 3)
+            if (Pacients.getCurrentRowNumber() != -1)
             {
-                MessageBox.Show("Пациент не может иметь более трех типов документов.", "Ошибка");
-                return;
+                if (Connect.ds.Tables["UpdDoc"].Rows.Count == 3)
+                {
+                    MessageBox.Show("Пациент не может иметь более трех типов документов.", "Ошибка");
+                    return;
+                }
             }
 
             PacDoc pacDoc = new PacDoc();
             pacDoc.ShowDialog();
             DocTable.SelectedIndex = -1;
             Table_Fill();
+        }
+
+        private void ButtonSave_Click(object sender, RoutedEventArgs e)
+        {
+            string sql;
+            string result;
+
+            MessageBoxButton buttons = MessageBoxButton.YesNo;
+            result = MessageBox.Show("Применить изменения?", "Изменения", buttons).ToString();
+            if (result == "No") return;
+            else if (result == "Yes")
+            {
+                if (Pacients.getCurrentRowNumber() != -1)
+                {
+                    sql = "update patient set fam='" + Fam.Text + "', name='" +
+                        Name.Text + "', patr='" + Patr.Text + "', birth_date='" +
+                        Birth.Text + "', gender='"+ Gender.Text + "', phone_number='"+
+                        Phone.Text + "', email='" + Email.Text + "', note='" + Note.Text + 
+                        "' where id=" + Pacients.getCurrentRowNumber();
+                    if (!Connect.Modification_Execute(sql)) return;
+                }
+                else
+                {
+                    sql = "insert into patient(fam, name, patr, birth_date, gender, phone_number, email, note) values('" + Fam.Text +
+                        "', '" + Name.Text + "', '" + Patr.Text + "', '" + Birth.Text + "', '" + Gender.Text + 
+                        "', '" + Phone.Text + "', '" + Email.Text + "', '" + Note.Text + "')";
+                    if (!Connect.Modification_Execute(sql)) return;
+                }
+            }
+
+            this.Close();
+        }
+
+        private void ButtonClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

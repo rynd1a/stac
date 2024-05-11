@@ -22,11 +22,11 @@ namespace stac
         {
             CreateorUpdatePac createorUpdatePac = new CreateorUpdatePac();
             createorUpdatePac.ShowDialog();
-            return;
+            Table_Fill();
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            FillTable();
+            Table_Fill();
         }
 
         public static int getCurrentRowNumber()
@@ -34,7 +34,7 @@ namespace stac
             return id_pac;
         }
 
-        private void FillTable()
+        private void Table_Fill()
         {
             Connect.Table_Fill("Pac", "select id as Номер, (fam || ' ' || name || ' ' || patr) as ФИО, birth_date as \"Дата рождения\"," +
                " gender as Пол, phone_number as Телефон, email as \"Электронная почта\", note as Примечание " +
@@ -62,13 +62,15 @@ namespace stac
             CreateorUpdatePac createorUpdatePac = new CreateorUpdatePac();
             createorUpdatePac.ShowDialog();
             PacTable.SelectedIndex = -1;
-            FillTable();
+            Table_Fill();
+            NavigationService.Navigate(new Pacients());
         }
 
         private void ButtonDel_Click(object sender, RoutedEventArgs e)
         {
-            int id = PacTable.SelectedIndex;
-            if (id == -1)
+            int index = PacTable.SelectedIndex;
+            id_pac = Convert.ToInt32(Connect.ds.Tables["Pac"].Rows[index]["Номер"]);
+            if (id_pac == -1)
             {
                 MessageBox.Show("Выберите строку для удаления!");
                 return;
@@ -80,11 +82,12 @@ namespace stac
             if (result == "No") return;
             else if (result == "Yes")
             {
-                string sql = "delete from patient where id = " + id;
+                string sql = "delete from document where patient_id = " + id_pac + "; delete from address where patient_id = " 
+                    + id_pac + "; delete from patient where id = " + id_pac;
                 if (!Connect.Modification_Execute(sql))
                     return;
-                Connect.ds.Tables["Pac"].Rows.RemoveAt(id);
             }
+            NavigationService.Navigate(new Pacients());
         }
 
     }

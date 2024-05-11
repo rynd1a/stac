@@ -19,8 +19,8 @@
         <TextBox x:Name="Phone" HorizontalAlignment="Left" Margin="38,339,0,0" FontSize="15" Background="#D9D9D9" Foreground="#747373" TextWrapping="Wrap" Text="Номер телефона" VerticalAlignment="Top" Width="290" Height="30" GotFocus="Phone_GotFocus" />
         <TextBox x:Name="Email" HorizontalAlignment="Left" Margin="38,386,0,0" FontSize="15" Background="#D9D9D9" Foreground="#747373" TextWrapping="Wrap" Text="Электронная почта" VerticalAlignment="Top" Width="290" Height="30" GotFocus="Email_GotFocus" />
         <TextBox x:Name="Note" HorizontalAlignment="Left" Margin="38,429,0,0" FontSize="15" Background="#D9D9D9" Foreground="#747373" TextWrapping="Wrap" Text="Примечание" VerticalAlignment="Top" Width="290" Height="30" GotFocus="Note_GotFocus" />
-        <Button x:Name="ButtonSave" FontSize="15" Content="Сохранить данные" HorizontalAlignment="Left" Margin="431,451,0,0" VerticalAlignment="Top" Foreground="White" Height="36" Width="160" Background="#34495E" />
-        <Button x:Name="ButtonDel" FontSize="15" Content="Удалить данные" HorizontalAlignment="Left" Margin="603,451,0,0" VerticalAlignment="Top" Foreground="White" Height="36" Width="160" Background="#34495E" />
+        <Button x:Name="ButtonSave" FontSize="15" Content="Сохранить данные" HorizontalAlignment="Left" Margin="431,451,0,0" VerticalAlignment="Top" Foreground="White" Height="36" Width="160" Background="#34495E" Click="ButtonSave_Click" />
+        <Button x:Name="ButtonClose" FontSize="15" Content="Отмена" HorizontalAlignment="Left" Margin="603,451,0,0" VerticalAlignment="Top" Foreground="White" Height="36" Width="160" Background="#34495E" Click="ButtonClose_Click" />
         <Rectangle HorizontalAlignment="Left" Height="135" Margin="441,88,0,0" Stroke="#D9D9D9" VerticalAlignment="Top" Width="300" Fill="#D9D9D9" />
         <Label Content="Адрес" HorizontalAlignment="Left" Margin="441,89,0,0" VerticalAlignment="Top" Foreground="#747373"/>
         <DataGrid x:Name="AdrTable" d:ItemsSource="{d:SampleData ItemCount=1}" ColumnWidth="*" Margin="447,120,65,396">
