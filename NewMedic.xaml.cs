@@ -15,14 +15,14 @@ namespace stac
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
-
+            Medics.id_vrach = -1;
             this.Close();
         }
 
-        private void Name_GotFocus(object sender, RoutedEventArgs e)
+        private void Nam_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (Name.Text == "Имя")
-            Name.Text = "";
+            if (Nam.Text == "Имя")
+            Nam.Text = "";
         }
 
         private void Fam_GotFocus(object sender, RoutedEventArgs e)
@@ -55,14 +55,14 @@ namespace stac
                 if (Medics.getCurrentRowNumber() != -1)
                 {
                     sql = "update medic set fam='" + Fam.Text.Replace(" ", "") + "', name='" +
-                        Name.Text.Replace(" ", "") + "', patr='" + Patr.Text.Replace(" ", "") + "', department_id=" +
+                        Nam.Text.Replace(" ", "") + "', patr='" + Patr.Text.Replace(" ", "") + "', department_id=" +
                         id_dep + " where id=" + Medics.getCurrentRowNumber();
                     if (!Connect.Modification_Execute(sql)) return;
                 }
                 else
                 {
                     sql = "insert into medic(fam, name, patr, department_id) values('" + Fam.Text.Replace(" ", "") +
-                        "', '" + Name.Text.Replace(" ", "") + "', '" + Patr.Text.Replace(" ", "") + "', " + id_dep + ")";
+                        "', '" + Nam.Text.Replace(" ", "") + "', '" + Patr.Text.Replace(" ", "") + "', " + id_dep + ")";
                     if (!Connect.Modification_Execute(sql)) return;
                 }
             }
@@ -72,7 +72,7 @@ namespace stac
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            Name.Text = "Имя";
+            Nam.Text = "Имя";
             Fam.Text = "Фамилия";
             Patr.Text = "Отчество";
 
@@ -82,13 +82,13 @@ namespace stac
         private void Window_Loaded(object sender, EventArgs e)
         {
             Connect.Table_Fill("Dep", "select id, name from department");
-            Dep.ItemsSource = Connect.ds.Tables["Depart"].DefaultView;
+            Dep.ItemsSource = Connect.ds.Tables["Dep"].DefaultView;
 
             if (Medics.getCurrentRowNumber() == -1) return;
 
             Connect.Table_Fill("UpdMedic", "select * from medic where id=" + Medics.getCurrentRowNumber());
 
-            Name.Text = Connect.ds.Tables["UpdMedic"].Rows[0]["name"].ToString().Replace(" ", "");
+            Nam.Text = Connect.ds.Tables["UpdMedic"].Rows[0]["name"].ToString().Replace(" ", "");
             Fam.Text = Connect.ds.Tables["UpdMedic"].Rows[0]["fam"].ToString().Replace(" ", "");
             Patr.Text = Connect.ds.Tables["UpdMedic"].Rows[0]["patr"].ToString().Replace(" ", "");
 
@@ -105,5 +105,7 @@ namespace stac
                 Dep.SelectedIndex = i;
             }
         }
+
+      
     }
 }

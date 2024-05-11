@@ -80,5 +80,13 @@ namespace stac
             CreateorUpdatePac.id_adr = -1;
             this.Close();
         }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Adr.Text = "Адрес";
+            Type.SelectedIndex = -1;
+
+            CreateorUpdatePac.id_adr = -1;
+        }
     }
 }

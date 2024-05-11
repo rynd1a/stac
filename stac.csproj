@@ -138,6 +138,9 @@
     <Compile Include="PacAdr.xaml.cs">
       <DependentUpon>PacAdr.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PacDoc.xaml.cs">
+      <DependentUpon>PacDoc.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pacients.xaml.cs">
       <DependentUpon>Pacients.xaml</DependentUpon>
     </Compile>
@@ -208,6 +211,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PacAdr.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PacDoc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

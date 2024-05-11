@@ -18,6 +18,7 @@ namespace stac
         }
 
         public static int id_adr = -1;
+        public static int id_doc = -1;
 
         private void Fam_GotFocus(object sender, RoutedEventArgs e)
         {
@@ -54,6 +55,11 @@ namespace stac
             return id_adr;
         }
 
+        public static int getCurrentDocRowNumber()
+        {
+            return id_doc;
+        }
+
         private void Note_GotFocus(object sender, RoutedEventArgs e)
         {
             if (Note.Text == "Примечание")
@@ -75,8 +81,7 @@ namespace stac
         private void Table_Fill()
         {
             Connect.Table_Fill("UpdAdr", "select id, adr from address where patient_id=" + Pacients.getCurrentRowNumber());
-            Connect.Table_Fill("UpdDoc", "select id, ((case when type = 0 then 'Паспорт' when type = 1 then 'СНИЛС' " +
-                " when type = 2 then 'Полис ОМС' end) || ' ' || ser || ' ' || num) as doc from document where patient_id=" + Pacients.getCurrentRowNumber());
+            Connect.Table_Fill("UpdDoc", "select id, (type || ' ' || ser || ' ' || num) as doc from document where patient_id=" + Pacients.getCurrentRowNumber());
 
             AdrTable.ItemsSource = Connect.ds.Tables["UpdAdr"].DefaultView;
             AdrTable.AutoGenerateColumns = true;
@@ -105,11 +110,19 @@ namespace stac
             Table_Fill();
         }
 
-        private void Window_Loaded(object sender, EventArgs e)
+        private void DocRow_DoubleClick(object sender, MouseButtonEventArgs e)
         {
-            //Connect.Table_Fill("Dep", "select id, name from department");
-            //Dep.ItemsSource = Connect.ds.Tables["Depart"].DefaultView;
-            
+            DataRowView row = (DataRowView)DocTable.CurrentItem;
+            id_doc = Convert.ToInt32(row["id"]);
+
+            PacDoc pacDoc = new PacDoc();
+            pacDoc.ShowDialog();
+            DocTable.SelectedIndex = -1;
+            Table_Fill();
+        }
+
+        private void Window_Loaded(object sender, EventArgs e)
+        {            
             if (Pacients.getCurrentRowNumber() == -1) return;
             Table_Fill();
             Connect.Table_Fill("UpdPac", "select * from patient where id=" + Pacients.getCurrentRowNumber());
@@ -143,6 +156,20 @@ namespace stac
             PacAdr pacAdr = new PacAdr();
             pacAdr.ShowDialog();
             AdrTable.SelectedIndex = -1;
+            Table_Fill();
+        }
+
+        private void ButtonAddDoc_Click(object sender, RoutedEventArgs e)
+        {
+            if (Connect.ds.Tables["UpdDoc"].Rows.Count == 3)
+            {
+                MessageBox.Show("Пациент не может иметь более трех типов документов.", "Ошибка");
+                return;
+            }
+
+            PacDoc pacDoc = new PacDoc();
+            pacDoc.ShowDialog();
+            DocTable.SelectedIndex = -1;
             Table_Fill();
         }
     }
