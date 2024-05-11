@@ -21,10 +21,10 @@ namespace stac
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            FillTable();
+            Table_Fill();
         }
 
-        private void FillTable()
+        private void Table_Fill()
         {
             Connect.Table_Fill("Medic", "select m.id as Номер, fam as Фамилия, m.name as Имя, patr as Отчество, d.name as Отделение from medic m join department d on m.department_id=d.id order by m.id");
             MedicsTable.ItemsSource = Connect.ds.Tables["Medic"].DefaultView;
@@ -46,7 +46,7 @@ namespace stac
             NewMedic newMedic = new NewMedic();
             newMedic.ShowDialog();
             MedicsTable.SelectedIndex = -1;
-            FillTable();
+            Table_Fill();
         }
 
         public static int getCurrentRowNumber()
@@ -59,7 +59,7 @@ namespace stac
             NewMedic newMedic = new NewMedic();
             newMedic.ShowDialog();
             id_vrach = -1;
-            FillTable();
+            Table_Fill();
         }
 
         private void ButtonDel_Click(object sender, RoutedEventArgs e)

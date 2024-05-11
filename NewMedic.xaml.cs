@@ -37,11 +37,6 @@ namespace stac
                 Patr.Text = "";
         }
 
-        private void ComboBox_Loaded(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
             string sql;
@@ -52,7 +47,7 @@ namespace stac
                 if (Connect.ds.Tables["Depart"].DefaultView[i]["name"].ToString() == Dep.Text)
                     id_dep = Connect.ds.Tables["Depart"].DefaultView[i]["id"].ToString();
 
-                    MessageBoxButton buttons = MessageBoxButton.YesNo;
+            MessageBoxButton buttons = MessageBoxButton.YesNo;
             result = MessageBox.Show("Применить изменения?", "Изменения", buttons).ToString();
             if (result == "No") return;
             else if (result == "Yes")

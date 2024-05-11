@@ -1,0 +1,18 @@
+﻿<Window x:Class="stac.PacAdr"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:stac"
+        mc:Ignorable="d"
+        Title="Адрес" Height="300" Width="450" Loaded="Window_Loaded">
+    <Grid Background="#F4F4F4" Margin="0,4,0,-4">
+        <TextBox x:Name="Adr" HorizontalAlignment="Left" Margin="73,116,0,0" FontSize="15" Background="#D9D9D9" Foreground="#747373" TextWrapping="Wrap" Text="Адрес" VerticalAlignment="Top" Width="290" Height="30" GotFocus="Adr_GotFocus" />
+        <ComboBox x:Name="Type" HorizontalAlignment="Left" Margin="73,62,0,0" FontSize="15" VerticalAlignment="Top" Width="290" Background="#D9D9D9" Foreground="#747373" Height="30">
+            <ComboBoxItem Content="Адрес регистрации"/>
+            <ComboBoxItem Content="Адрес фактического проживания"/>
+        </ComboBox>
+        <Button x:Name="ButtonSave" FontSize="15" Content="Сохранить" HorizontalAlignment="Left" Margin="73,179,0,0" VerticalAlignment="Top" Foreground="White" Height="36" Width="100" Background="#34495E" RenderTransformOrigin="0.503,0.543" Click="ButtonSave_Click" />
+        <Button x:Name="ButtonClose" FontSize="15" Content="Отмена" HorizontalAlignment="Left" Margin="263,179,0,0" VerticalAlignment="Top" Foreground="White" Height="36" Width="100" Background="#34495E" RenderTransformOrigin="0.399,-0.599" Click="ButtonClose_Click" />
+    </Grid>
+</Window>

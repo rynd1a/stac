@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace stac
 {
@@ -26,6 +16,8 @@ namespace stac
             InitializeComponent();
         }
 
+        public static int id_pac = -1;
+
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             CreateorUpdatePac createorUpdatePac = new CreateorUpdatePac();
@@ -34,13 +26,23 @@ namespace stac
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            Connect.Table_Fill("Pac", "select id as Номер, fam || ' ' || name || ' ' || patr as ФИО, birth_date as \"Дата рождения\"," +
-                " (case when gender = 0 then 'Женский' when gender = 1 then 'Мужской' else 'Неизвестно' end) as Пол, phone_number" +
-                " as Телефон, email as \"Электронная почта\", note as Примечание " +
-                " from patient order by id");
+            FillTable();
+        }
+
+        public static int getCurrentRowNumber()
+        {
+            return id_pac;
+        }
+
+        private void FillTable()
+        {
+            Connect.Table_Fill("Pac", "select id as Номер, (fam || ' ' || name || ' ' || patr) as ФИО, birth_date as \"Дата рождения\"," +
+               " gender as Пол, phone_number as Телефон, email as \"Электронная почта\", note as Примечание " +
+               " from patient order by id");
             PacTable.ItemsSource = Connect.ds.Tables["Pac"].DefaultView;
+             if ((PacTable.Columns[2] as DataGridTextColumn).Binding.StringFormat != "dd.MM.yyyy")
+                (PacTable.Columns[2] as DataGridTextColumn).Binding.StringFormat = "dd.MM.yyyy";
             PacTable.AutoGenerateColumns = true;
-            (PacTable.Columns[2] as DataGridTextColumn).Binding.StringFormat = "dd.mm.yyyy";
             PacTable.HeadersVisibility = DataGridHeadersVisibility.Column;
             PacTable.CanUserAddRows = false;
             PacTable.Columns[0].IsReadOnly = true;
@@ -50,6 +52,17 @@ namespace stac
             PacTable.Columns[4].IsReadOnly = true;
             PacTable.Columns[5].IsReadOnly = true;
             PacTable.Columns[6].IsReadOnly = true;
+        }
+
+        private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            DataRowView row = (DataRowView)PacTable.CurrentItem;
+            id_pac = Convert.ToInt32(row["Номер"]);
+
+            CreateorUpdatePac createorUpdatePac = new CreateorUpdatePac();
+            createorUpdatePac.ShowDialog();
+            PacTable.SelectedIndex = -1;
+            FillTable();
         }
 
         private void ButtonDel_Click(object sender, RoutedEventArgs e)
@@ -62,13 +75,12 @@ namespace stac
             }
 
             string result;
-            string sql = "";
             MessageBoxButton buttons = MessageBoxButton.YesNo;
             result = MessageBox.Show("Вы точно хотите удалить запись?", "Удаление", buttons).ToString();
             if (result == "No") return;
             else if (result == "Yes")
             {
-                sql = "delete from patient where id = " + id;
+                string sql = "delete from patient where id = " + id;
                 if (!Connect.Modification_Execute(sql))
                     return;
                 Connect.ds.Tables["Pac"].Rows.RemoveAt(id);

@@ -40,10 +40,6 @@ namespace stac
                         this.Hide();
                         Employee employee = new Employee();
                         employee.Show();
-                        Connect.Table_Fill("Pac", "select id as Номер, fam || ' ' || name || ' ' || patr as ФИО, birth_date as \"Дата рождения\"," +
-                        " (case when gender = 0 then 'Женский' when gender = 1 then 'Мужской' else 'Неизвестно' end) as Пол, phone_number" +
-                        " as Телефон, email as \"Электронная почта\", note as Примечание " +
-                        " from patient order by id");
                         this.Close();
                         return;
                     }
