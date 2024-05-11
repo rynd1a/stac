@@ -1,18 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace stac
 {
@@ -26,10 +13,9 @@ namespace stac
             InitializeComponent();
         }
 
-        int id = Medics.IdVrach();
-
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
+
             this.Close();
         }
 
@@ -51,38 +37,9 @@ namespace stac
                 Patr.Text = "";
         }
 
-        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        private void ComboBox_Loaded(object sender, RoutedEventArgs e)
         {
-            Connect.Table_Fill("Depart", "select id, name from department");
-            Dep.ItemsSource = Connect.ds.Tables["Depart"].DefaultView;
-
-            if (id != -1)
-            {
-                Connect.Table_Fill("UpdMedic", "select * from medic where id=" + id);
-                Name.Text = Connect.ds.Tables["UpdMedic"].Rows[0]["name"].ToString().Replace(" ", "");
-                Fam.Text = Connect.ds.Tables["UpdMedic"].Rows[0]["fam"].ToString().Replace(" ", "");
-                Patr.Text = Connect.ds.Tables["UpdMedic"].Rows[0]["patr"].ToString().Replace(" ", "");
-            }
-            else
-            {
-                ButtonDel.Visibility = Visibility.Hidden;
-            }
-        }
-
-        private void ButtonDel_Click(object sender, RoutedEventArgs e)
-        {
-            string result;
-            string sql;
-            MessageBoxButton buttons = MessageBoxButton.YesNo;
-            result = MessageBox.Show("Вы точно хотите удалить запись?", "Удаление", buttons).ToString();
-            if (result == "No") return;
-            else if (result == "Yes")
-            {
-                sql = "delete from medic where id = " + id;
-                if (!Connect.Modification_Execute(sql))
-                    return;
-                Connect.ds.Tables["Medic"].Rows.RemoveAt(id);
-            }
+            
         }
 
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
@@ -100,26 +57,58 @@ namespace stac
             if (result == "No") return;
             else if (result == "Yes")
             {
-                if (id != -1)
+                if (Medics.getCurrentRowNumber() != -1)
                 {
                     sql = "update medic set fam='" + Fam.Text.Replace(" ", "") + "', name='" +
                         Name.Text.Replace(" ", "") + "', patr='" + Patr.Text.Replace(" ", "") + "', department_id=" +
-                        id_dep + " where id=" + id;
-                    if (!Connect.Modification_Execute(sql))
-                        return;
-                    //Connect.ds.Tables["Medic"].Rows[id].ItemArray = new object[] { id, Fam.Text, Name.Text, Patr.Text, id_dep };
-                    this.Close();
+                        id_dep + " where id=" + Medics.getCurrentRowNumber();
+                    if (!Connect.Modification_Execute(sql)) return;
                 }
                 else
                 {
                     sql = "insert into medic(fam, name, patr, department_id) values('" + Fam.Text.Replace(" ", "") +
                         "', '" + Name.Text.Replace(" ", "") + "', '" + Patr.Text.Replace(" ", "") + "', " + id_dep + ")";
-                    if (!Connect.Modification_Execute(sql))
-                        return;
-                    this.Close();
+                    if (!Connect.Modification_Execute(sql)) return;
                 }
             }
-            
+           
+            this.Close();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Name.Text = "Имя";
+            Fam.Text = "Фамилия";
+            Patr.Text = "Отчество";
+
+            Medics.id_vrach = -1;
+        }
+
+        private void Window_Loaded(object sender, EventArgs e)
+        {
+            Connect.Table_Fill("Dep", "select id, name from department");
+            Dep.ItemsSource = Connect.ds.Tables["Depart"].DefaultView;
+
+            if (Medics.getCurrentRowNumber() == -1) return;
+
+            Connect.Table_Fill("UpdMedic", "select * from medic where id=" + Medics.getCurrentRowNumber());
+
+            Name.Text = Connect.ds.Tables["UpdMedic"].Rows[0]["name"].ToString().Replace(" ", "");
+            Fam.Text = Connect.ds.Tables["UpdMedic"].Rows[0]["fam"].ToString().Replace(" ", "");
+            Patr.Text = Connect.ds.Tables["UpdMedic"].Rows[0]["patr"].ToString().Replace(" ", "");
+
+            for (int i = 0; i < Connect.ds.Tables["Dep"].DefaultView.Count; i++)
+            {
+                if (
+                    Connect.ds.Tables["Dep"].DefaultView[i]["id"].ToString()
+                    != Connect.ds.Tables["UpdMedic"].Rows[0]["department_id"].ToString()
+                    )
+                {
+                    continue;
+                }
+
+                Dep.SelectedIndex = i;
+            }
         }
     }
 }

@@ -29,18 +29,15 @@ namespace stac
 
         public static bool Modification_Execute(string sql)
         {
-            NpgsqlCommand com;
-            com = new NpgsqlCommand(sql, connection);
+            NpgsqlCommand com = new NpgsqlCommand(sql, connection);
             connection.Open();
-            try
-            {
+            try {
                 com.ExecuteNonQuery();
-            }
-            catch (NpgsqlException)
-            {
+            } catch (NpgsqlException) {
                 MessageBox.Show("Обновление базы данных не было выполнено из-за некорректно указанных" +
                     " обновляемых данных либо отсутствующих, но при этом обязательных!!!", "Ошибка");
-                connection.Close(); return false;
+                connection.Close(); 
+                return false;
             }
             connection.Close();
             return true;
