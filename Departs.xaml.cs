@@ -74,24 +74,22 @@ namespace stac
         }
         private void ButtonDel_Click(object sender, RoutedEventArgs e)
         {
-            int id = DepartsTable.SelectedIndex;
-            if (id == -1)
+            int index = DepartsTable.SelectedIndex;
+            if (index == -1)
             {
                 MessageBox.Show("Выберите строку для удаления!");
                 return;
             }
-
-            string result;
-            string sql = "";
+            int id = Convert.ToInt32(Connect.ds.Tables["Depart"].Rows[index]["Номер"]);
             MessageBoxButton buttons = MessageBoxButton.YesNo;
-            result = MessageBox.Show("Вы точно хотите удалить запись?", "Удаление", buttons).ToString();
+            string result = MessageBox.Show("Вы точно хотите удалить запись?", "Удаление", buttons).ToString();
             if (result == "No") return;
             else if (result == "Yes")
             {
-                sql = "delete from department where id = " + id;
+                string sql = "delete from department where id = " + id;
                 if (!Connect.Modification_Execute(sql))
                     return;
-                Connect.ds.Tables["Depart"].Rows.RemoveAt(id);
+                Connect.ds.Tables["Depart"].Rows.RemoveAt(index);
             }
         }
 

@@ -65,16 +65,14 @@ namespace stac
         private void ButtonDel_Click(object sender, RoutedEventArgs e)
         {
             int index = MedicsTable.SelectedIndex;
-            id_vrach = Convert.ToInt32(Connect.ds.Tables["Medic"].Rows[index]["Номер"]);
-            if (id_vrach == -1)
+            if (index == -1)
             {
                 MessageBox.Show("Выберите строку для удаления!");
                 return;
             }
-
-            string result;
+            id_vrach = Convert.ToInt32(Connect.ds.Tables["Medic"].Rows[index]["Номер"]);
             MessageBoxButton buttons = MessageBoxButton.YesNo;
-            result = MessageBox.Show("Вы точно хотите удалить запись?", "Удаление", buttons).ToString();
+            string result = MessageBox.Show("Вы точно хотите удалить запись?", "Удаление", buttons).ToString();
             if (result == "No") return;
             else if (result == "Yes")
             {

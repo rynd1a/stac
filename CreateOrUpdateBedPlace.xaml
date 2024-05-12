@@ -5,13 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:stac"
         mc:Ignorable="d"
-        Title="Койка" Height="600" Width="800">
+        Title="Койка" Height="350" Width="450" Closed="Window_Closed" Loaded="Window_Loaded">
     <Grid Background="#F4F4F4">
-        <TextBox HorizontalAlignment="Center" Margin="0,61,0,0" FontSize="15" Background="#D9D9D9" Foreground="#747373" TextWrapping="Wrap" Text="Номер" VerticalAlignment="Top" Width="290" Height="30" />
-        <ComboBox HorizontalAlignment="Center" Margin="0,117,0,0" VerticalAlignment="Top" Width="290" Background="#D9D9D9" Foreground="#747373" Height="30"/>
-        <Button x:Name="ButtonSave" FontSize="15" Content="Сохранить" HorizontalAlignment="Left" Margin="255,243,0,0" VerticalAlignment="Top" Foreground="White" Height="30" Width="120" Background="#34495E" />
-        <Button x:Name="ButtonDel" FontSize="15" Content="Удалить койку" HorizontalAlignment="Center" Margin="0,301,0,0" VerticalAlignment="Top" Foreground="White" Height="30" Width="120" Background="#34495E" />
-        <Button x:Name="ButtonClose" FontSize="15" Content="Отмена" HorizontalAlignment="Left" Margin="425,243,0,0" VerticalAlignment="Top" Foreground="White" Height="30" Width="120" Background="#34495E" Click="ButtonClose_Click" />
-        <ComboBox HorizontalAlignment="Center" Margin="0,170,0,0" VerticalAlignment="Top" Width="290" Background="#D9D9D9" Foreground="#747373" Height="30"/>
+        <ComboBox x:Name="Prof" HorizontalAlignment="Center" Margin="0,99,0,0" VerticalAlignment="Top" Width="290" Background="#D9D9D9" Foreground="#747373" Height="30">
+            <ComboBoxItem Content="реанимационная"/>
+            <ComboBoxItem Content="интенсивной терапии"/>
+            <ComboBoxItem Content="гастроэнтерологическая"/>
+            <ComboBoxItem Content="кардиологическая"/>
+            <ComboBoxItem Content="реабилитационная"/>
+            <ComboBoxItem Content="неврологическая"/>
+            <ComboBoxItem Content="онкологическая"/>
+            <ComboBoxItem Content="офтальмологическая"/>
+            <ComboBoxItem Content="хирургическая"/>
+         </ComboBox>
+        <Button x:Name="ButtonSave" FontSize="15" Content="Сохранить" HorizontalAlignment="Left" Margin="80,224,0,0" VerticalAlignment="Top" Foreground="White" Height="30" Width="120" Background="#34495E" Click="ButtonSave_Click" />
+        <Button x:Name="ButtonClose" FontSize="15" Content="Отмена" HorizontalAlignment="Left" Margin="250,224,0,0" VerticalAlignment="Top" Foreground="White" Height="30" Width="120" Background="#34495E" Click="ButtonClose_Click" />
+        <ComboBox x:Name="Status" HorizontalAlignment="Center" VerticalAlignment="Center" Width="290" Background="#D9D9D9" Foreground="#747373" Height="30">
+            <ComboBoxItem Content="Занята"/>
+            <ComboBoxItem Content="Ремонт"/>
+            <ComboBoxItem Content="Свернута"/>
+            <ComboBoxItem Content="Резерв"/>
+            <ComboBoxItem Content="Свободна"/>
+        </ComboBox>
     </Grid>
 </Window>

@@ -28,8 +28,8 @@ namespace stac
 
         private void Name_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (Name.Text == "Имя")
-                Name.Text = "";
+            if (Nam.Text == "Имя")
+                Nam.Text = "";
         }
 
         private void Patr_GotFocus(object sender, RoutedEventArgs e)
@@ -68,7 +68,7 @@ namespace stac
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            Name.Text = "Имя";
+            Nam.Text = "Имя";
             Fam.Text = "Фамилия";
             Patr.Text = "Отчество";
             Phone.Text = "Номер телефона";
@@ -129,7 +129,7 @@ namespace stac
             Table_Fill();
             Connect.Table_Fill("UpdPac", "select * from patient where id=" + Pacients.getCurrentRowNumber());
 
-            Name.Text = Connect.ds.Tables["UpdPac"].Rows[0]["name"].ToString().Replace(" ", "");
+            Nam.Text = Connect.ds.Tables["UpdPac"].Rows[0]["name"].ToString().Replace(" ", "");
             Fam.Text = Connect.ds.Tables["UpdPac"].Rows[0]["fam"].ToString().Replace(" ", "");
             Patr.Text = Connect.ds.Tables["UpdPac"].Rows[0]["patr"].ToString().Replace(" ", "");
             Phone.Text = Connect.ds.Tables["UpdPac"].Rows[0]["phone_number"].ToString().Replace(" ", "");
@@ -184,17 +184,16 @@ namespace stac
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
             string sql;
-            string result;
 
             MessageBoxButton buttons = MessageBoxButton.YesNo;
-            result = MessageBox.Show("Применить изменения?", "Изменения", buttons).ToString();
+            string result = MessageBox.Show("Применить изменения?", "Изменения", buttons).ToString();
             if (result == "No") return;
             else if (result == "Yes")
             {
                 if (Pacients.getCurrentRowNumber() != -1)
                 {
                     sql = "update patient set fam='" + Fam.Text + "', name='" +
-                        Name.Text + "', patr='" + Patr.Text + "', birth_date='" +
+                        Nam.Text + "', patr='" + Patr.Text + "', birth_date='" +
                         Birth.Text + "', gender='"+ Gender.Text + "', phone_number='"+
                         Phone.Text + "', email='" + Email.Text + "', note='" + Note.Text + 
                         "' where id=" + Pacients.getCurrentRowNumber();
@@ -203,7 +202,7 @@ namespace stac
                 else
                 {
                     sql = "insert into patient(fam, name, patr, birth_date, gender, phone_number, email, note) values('" + Fam.Text +
-                        "', '" + Name.Text + "', '" + Patr.Text + "', '" + Birth.Text + "', '" + Gender.Text + 
+                        "', '" + Nam.Text + "', '" + Patr.Text + "', '" + Birth.Text + "', '" + Gender.Text + 
                         "', '" + Phone.Text + "', '" + Email.Text + "', '" + Note.Text + "')";
                     if (!Connect.Modification_Execute(sql)) return;
                 }

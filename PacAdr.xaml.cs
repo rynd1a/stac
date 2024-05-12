@@ -51,10 +51,9 @@ namespace stac
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
             string sql;
-            string result;
 
             MessageBoxButton buttons = MessageBoxButton.YesNo;
-            result = MessageBox.Show("Применить изменения?", "Изменения", buttons).ToString();
+            string  result = MessageBox.Show("Применить изменения?", "Изменения", buttons).ToString();
             if (result == "No") return;
             else if (result == "Yes")
             {

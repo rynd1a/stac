@@ -44,7 +44,7 @@ namespace stac
             string id_dep = "";
 
             for (int i = 0; i < Connect.ds.Tables["Depart"].DefaultView.Count; i++)
-                if (Connect.ds.Tables["Depart"].DefaultView[i]["name"].ToString() == Dep.Text)
+                if (Connect.ds.Tables["Depart"].DefaultView[i]["id"].ToString() == Dep.SelectedValue.ToString())
                     id_dep = Connect.ds.Tables["Depart"].DefaultView[i]["id"].ToString();
 
             MessageBoxButton buttons = MessageBoxButton.YesNo;
