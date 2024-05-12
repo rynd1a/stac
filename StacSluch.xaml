@@ -16,7 +16,7 @@
                 </Style>
             </DataGrid.ItemContainerStyle>
         </DataGrid>
-        <Button x:Name="ButtonAdd" FontSize="15" Content="Новая запись" HorizontalAlignment="Left" Margin="651,40,0,0" VerticalAlignment="Top" Foreground="White" Height="36" Width="124" Background="#34495E" Click="ButtonAdd_Click" />
+        <Button x:Name="ButtonAdd" FontSize="15" Content="Создать случай" HorizontalAlignment="Left" Margin="651,40,0,0" VerticalAlignment="Top" Foreground="White" Height="36" Width="124" Background="#34495E" Click="ButtonAdd_Click" />
         <Button x:Name="ButtonDel" FontSize="15" Content="Удалить запись" HorizontalAlignment="Left" Margin="651,100,0,0" VerticalAlignment="Top" Foreground="White" Height="36" Width="124" Background="#34495E" Click="ButtonDel_Click" />
     </Grid>
 </Page>
