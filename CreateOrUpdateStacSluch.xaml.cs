@@ -26,10 +26,17 @@ namespace stac
             InitializeComponent();
         }
 
+        private static int id_pac = -1;
+
         private void ButtonSearch_Click(object sender, RoutedEventArgs e)
         {
             SearchPac searchPac = new SearchPac();
             searchPac.ShowDialog();
+
+            id_pac = SearchPac.id_pac;
+            Connect.Table_Fill("Pac", "select id, (fam || ' ' || name || ' ' || patr) as name from patient where id=" + id_pac);
+            Pac.Text = Connect.ds.Tables["Pac"].Rows[0]["name"].ToString();
+
             return;
         }
 
@@ -54,7 +61,8 @@ namespace stac
             Rez.Text = Connect.ds.Tables["UpdSluch"].Rows[0]["result"].ToString();
             Status.Text = Connect.ds.Tables["UpdSluch"].Rows[0]["status"].ToString();
             OpenS.Text = Convert.ToDateTime(Connect.ds.Tables["UpdSluch"].Rows[0]["date_create"]).ToString();
-            CloseS.Text = Convert.ToDateTime(Connect.ds.Tables["UpdSluch"].Rows[0]["date_close"]).ToString();
+            if (Connect.ds.Tables["UpdSluch"].Rows[0]["date_close"].ToString() == "") CloseS.Text = "";
+            else CloseS.Text = Convert.ToDateTime(Connect.ds.Tables["UpdSluch"].Rows[0]["date_close"]).ToString();
 
             if (CloseS.Text != "")
             {
