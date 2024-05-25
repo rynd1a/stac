@@ -150,14 +150,17 @@
     <Compile Include="SearchPac.xaml.cs">
       <DependentUpon>SearchPac.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StacSluch.xaml.cs">
-      <DependentUpon>StacSluch.xaml</DependentUpon>
+    <Compile Include="Fond.xaml.cs">
+      <DependentUpon>Fond.xaml</DependentUpon>
     </Compile>
     <Compile Include="TransfPac.xaml.cs">
       <DependentUpon>TransfPac.xaml</DependentUpon>
     </Compile>
     <Compile Include="Users.xaml.cs">
       <DependentUpon>Users.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UsersConnect.xaml.cs">
+      <DependentUpon>UsersConnect.xaml</DependentUpon>
     </Compile>
     <Page Include="Admin.xaml">
       <SubType>Designer</SubType>
@@ -230,7 +233,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="StacSluch.xaml">
+    <Page Include="Fond.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -239,6 +242,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Users.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UsersConnect.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

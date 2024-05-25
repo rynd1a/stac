@@ -43,9 +43,9 @@ namespace stac
             string result;
             string id_dep = "";
 
-            for (int i = 0; i < Connect.ds.Tables["Depart"].DefaultView.Count; i++)
-                if (Connect.ds.Tables["Depart"].DefaultView[i]["id"].ToString() == Dep.SelectedValue.ToString())
-                    id_dep = Connect.ds.Tables["Depart"].DefaultView[i]["id"].ToString();
+            for (int i = 0; i < Connect.ds.Tables["DepartMed"].DefaultView.Count; i++)
+                if (Connect.ds.Tables["DepartMed"].DefaultView[i]["id"].ToString() == Dep.SelectedValue.ToString())
+                    id_dep = Connect.ds.Tables["DepartMed"].DefaultView[i]["id"].ToString();
 
             MessageBoxButton buttons = MessageBoxButton.YesNo;
             result = MessageBox.Show("Применить изменения?", "Изменения", buttons).ToString();
@@ -81,8 +81,8 @@ namespace stac
 
         private void Window_Loaded(object sender, EventArgs e)
         {
-            Connect.Table_Fill("Dep", "select id, name from department");
-            Dep.ItemsSource = Connect.ds.Tables["Dep"].DefaultView;
+            Connect.Table_Fill("DepartMed", "select id, name from department");
+            Dep.ItemsSource = Connect.ds.Tables["DepartMed"].DefaultView;
 
             if (Medics.getCurrentRowNumber() == -1) return;
 
@@ -92,10 +92,10 @@ namespace stac
             Fam.Text = Connect.ds.Tables["UpdMedic"].Rows[0]["fam"].ToString().Replace(" ", "");
             Patr.Text = Connect.ds.Tables["UpdMedic"].Rows[0]["patr"].ToString().Replace(" ", "");
 
-            for (int i = 0; i < Connect.ds.Tables["Dep"].DefaultView.Count; i++)
+            for (int i = 0; i < Connect.ds.Tables["DepartMed"].DefaultView.Count; i++)
             {
                 if (
-                    Connect.ds.Tables["Dep"].DefaultView[i]["id"].ToString()
+                    Connect.ds.Tables["DepartMed"].DefaultView[i]["id"].ToString()
                     != Connect.ds.Tables["UpdMedic"].Rows[0]["department_id"].ToString()
                     )
                 {

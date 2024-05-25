@@ -53,5 +53,10 @@ namespace stac
             this.Close();
             return;
         }
+
+        private void ButPal_Click(object sender, RoutedEventArgs e)
+        {
+            FrameAdmin.Content = new BedPlaceAndRoom();
+        }
     }
 }

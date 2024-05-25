@@ -10,10 +10,11 @@
     <Grid Background="#F4F4F4">
         <Rectangle HorizontalAlignment="Center" Height="30"  VerticalAlignment="Top" Width="800" Fill="#D9D9D9" Stroke="#D9D9D9"/>
         <Button x:Name="ButUser" Content="Пользователи" HorizontalAlignment="Left" Height="30" Background="#D9D9D9" Margin="35,0,0,0" VerticalAlignment="Top" Width="118" Click="ButUser_Click" BorderThickness="0"/>
-        <Button x:Name="ButDepart" Content="Отделения" HorizontalAlignment="Left" Height="30" Background="#D9D9D9" Margin="171,0,0,0" VerticalAlignment="Top" Width="118" Click="ButDepart_Click" BorderThickness="0"/>
-        <Button x:Name="ButMedic" Content="Врачи" HorizontalAlignment="Left" Height="30" Background="#D9D9D9" Margin="337,0,0,0" VerticalAlignment="Top" Width="118" Click="ButMedic_Click" BorderThickness="0"/>
-        <Button x:Name="ButReport" Content="Отчет" HorizontalAlignment="Left" Height="30" Background="#D9D9D9" Margin="476,0,0,0" VerticalAlignment="Top" Width="118" Click="ButReport_Click" BorderThickness="0"/>
+        <Button x:Name="ButDepart" Content="Отделения" HorizontalAlignment="Left" Height="30" Background="#D9D9D9" Margin="155,0,0,0" VerticalAlignment="Top" Width="118" Click="ButDepart_Click" BorderThickness="0"/>
+        <Button x:Name="ButMedic" Content="Врачи" HorizontalAlignment="Left" Height="30" Background="#D9D9D9" Margin="391,0,0,0" VerticalAlignment="Top" Width="118" Click="ButMedic_Click" BorderThickness="0"/>
+        <Button x:Name="ButReport" Content="Отчет" HorizontalAlignment="Left" Height="30" Background="#D9D9D9" Margin="514,0,0,0" VerticalAlignment="Top" Width="118" Click="ButReport_Click" BorderThickness="0"/>
         <Frame x:Name="FrameAdmin" Background="#F4F4F4" Margin="0,35,0,0" NavigationUIVisibility="Hidden"></Frame>
         <Button x:Name="ButLogout" Content="Выход" HorizontalAlignment="Left" Height="30" Margin="629,0,0,0" VerticalAlignment="Top" Background="#D9D9D9" Width="118" Click="ButLogout_Click" BorderThickness="0"/>
+        <Button x:Name="ButPal" Content="Палаты и койки" HorizontalAlignment="Left" Height="30" Background="#D9D9D9" Margin="273,0,0,0" VerticalAlignment="Top" Width="118" BorderThickness="0" Click="ButPal_Click"/>
     </Grid>
 </Window>

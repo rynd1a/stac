@@ -34,6 +34,7 @@ namespace stac
             searchPac.ShowDialog();
 
             id_pac = SearchPac.id_pac;
+            if (id_pac == -1) return;
             Connect.Table_Fill("Pac", "select id, (fam || ' ' || name || ' ' || patr) as name from patient where id=" + id_pac);
             Pac.Text = Connect.ds.Tables["Pac"].Rows[0]["name"].ToString();
 
@@ -42,7 +43,7 @@ namespace stac
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            StacSluch.id_sluch = -1;
+            Fond.action = 0;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -50,32 +51,20 @@ namespace stac
             Connect.Table_Fill("Medic", "select id, (fam || ' ' || name || ' ' || patr) as name from medic");
             Vrach.ItemsSource = Connect.ds.Tables["Medic"].DefaultView;
 
-            if (StacSluch.getCurrentRowNumber() == -1) return;
+            if (Fond.action == 2) return;
             ButtonSearch.Visibility = Visibility.Hidden;
+            ButtonSave.Visibility = Visibility.Hidden;
+            Rez.Visibility = Visibility.Visible;
             Connect.Table_Fill("UpdSluch", "select s.id, patient_id, (p.fam || ' ' || p.name || ' ' || p.patr) as Пациент, " +
-                "medic_id, place_id, diagnosis, s.status, date_create, date_close, result from stac_sluch s " +
-                "join patient p on s.patient_id=p.id where s.id=" + StacSluch.getCurrentRowNumber() + " order by s.id");
+               "medic_id, place_id, diagnosis, s.status, date_create, date_close, result from stac_sluch s " +
+               "join patient p on s.patient_id=p.id where s.id=" + Fond.getCurrentRowNumber() + " order by s.id");
 
             Pac.Text = Connect.ds.Tables["UpdSluch"].Rows[0]["Пациент"].ToString();
             Diag.Text = Connect.ds.Tables["UpdSluch"].Rows[0]["diagnosis"].ToString();
-            Rez.Text = Connect.ds.Tables["UpdSluch"].Rows[0]["result"].ToString();
             Status.Text = Connect.ds.Tables["UpdSluch"].Rows[0]["status"].ToString();
             OpenS.Text = Convert.ToDateTime(Connect.ds.Tables["UpdSluch"].Rows[0]["date_create"]).ToString();
             if (Connect.ds.Tables["UpdSluch"].Rows[0]["date_close"].ToString() == "") CloseS.Text = "";
             else CloseS.Text = Convert.ToDateTime(Connect.ds.Tables["UpdSluch"].Rows[0]["date_close"]).ToString();
-
-            if (CloseS.Text != "")
-            {
-                ButtonClose.Visibility = Visibility.Hidden;
-                ButtonSearch.Visibility = Visibility.Hidden;
-                ButtonSave.Visibility = Visibility.Hidden;
-
-                Diag.IsReadOnly = true;
-                Rez.IsReadOnly = true;
-                Status.IsReadOnly = true;
-                Vrach.IsReadOnly = true;
-                Place.IsReadOnly = true;
-            }
 
             for (int i = 0; i < Connect.ds.Tables["Medic"].DefaultView.Count; i++)
             {
@@ -86,12 +75,7 @@ namespace stac
                
                 Vrach.SelectedIndex = i;
             }
-        }
 
-        private void Rez_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (Rez.Text == "Результат")
-                Rez.Text = "";
         }
 
         private void Diag_GotFocus(object sender, RoutedEventArgs e)

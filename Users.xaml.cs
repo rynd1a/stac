@@ -99,5 +99,10 @@ namespace stac
             Connect.ds.Tables["User"].Rows.Add(new object[] { });
         }
 
+        private void ButtonConnect_Click(object sender, RoutedEventArgs e)
+        {
+            UsersConnect usersConnect = new UsersConnect();
+            usersConnect.ShowDialog();
+        }
     }
 }

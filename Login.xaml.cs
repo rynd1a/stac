@@ -21,6 +21,8 @@ namespace stac
             InitializeComponent();
         }
 
+        public static string id_userVrach = "";
+
         private void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
             for (int i = 0; i < Connect.ds.Tables["User"].Rows.Count; i++)
@@ -35,8 +37,12 @@ namespace stac
                         this.Close();
                         return;
                     }
-                    else if (Connect.ds.Tables["User"].Rows[i]["Тип"].ToString() == "Врач")
+                    else if (Connect.ds.Tables["User"].Rows[i]["Тип"].ToString() != "Администратор")
                     {
+                        Connect.Table_Fill("UserVrach", "select * from medic_user where user_id = " + Connect.ds.Tables["User"].Rows[i]["Номер"].ToString());
+
+                        if (Connect.ds.Tables["UserVrach"].Rows.Count > 0) id_userVrach = Connect.ds.Tables["UserVrach"].Rows[0]["medic_id"].ToString();
+
                         this.Hide();
                         Employee employee = new Employee();
                         employee.Show();
