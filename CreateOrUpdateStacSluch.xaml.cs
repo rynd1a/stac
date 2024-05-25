@@ -89,5 +89,28 @@ namespace stac
             if (Status.Text == "Статус")
                 Status.Text = "";
         }
+
+        private void ButtonClose_Click(object sender, RoutedEventArgs e)
+        {
+            string sql;
+            string result;
+
+            MessageBoxButton buttons = MessageBoxButton.YesNo;
+            result = MessageBox.Show("Применить изменения?", "Изменения", buttons).ToString();
+            if (result == "No") return;
+            else if (result == "Yes")
+            {
+                sql = "update stac_sluch set diagnosis='" + Diag.Text + "', status='" +
+                    Status.Text + "', date_close='" + CloseS.Text + "', result='" +
+                    Rez.Text + "' where id=" + Fond.getCurrentRowNumber();
+                if (!Connect.Modification_Execute(sql)) return;
+
+                sql = "update bed_place set status='Свободна' where id = (select bed_place_id from bed_place_hospital_room where id=" + Connect.ds.Tables["UpdSluch"].Rows[0]["place_id"].ToString() +")";
+                if (!Connect.Modification_Execute(sql)) return;
+
+            }
+
+            this.Close();
+        }
     }
 }

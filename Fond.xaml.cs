@@ -53,6 +53,7 @@ namespace stac
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            if (id_fondPal != -1) return;
             Connect.Table_Fill("DepPal", "select id, name from department");
             Connect.Table_Fill("DepVrach", "select department_id from medic where id= " + Login.id_userVrach);
             id_dep = Convert.ToInt32(Connect.ds.Tables["DepVrach"].Rows[0]["department_id"]);
@@ -103,11 +104,11 @@ namespace stac
 
         private void Fill_BedPlace(int id_fondPal)
         {
-            Connect.Table_Fill("FondBed", "select s.id as Случай, bp.id as Номер, bp.status as Статус, " +
-                "(fam || substring(name, 1, 1) || '. ' || substring(patr, 1, 1)) as Пациент, s.diagnosis as Диагноз " +
-                "from bed_place bp join bed_place_hospital_room bphr on bp.id=bphr.bed_place_id left " +
-                "join stac_sluch s on bphr.id=s.place_id left join patient p on s.patient_id=p.id " +
-                "where hospital_room_id = " + id_fondPal + " order by bp.id");
+            Connect.Table_Fill("FondBed", "with tbl as (select s.id, (p.fam || substring(p.name, 1, 1) || '. ' || substring(p.patr, 1, 1)) as pac, s.diagnosis, place_id " +
+                " from stac_sluch s " +
+                " join patient p on s.patient_id=p.id where date_close is null) select bp.id as Номер, bp.status as Статус, tbl.id as Случай, " +
+                " pac as Пациент, tbl.diagnosis as Диагноз from bed_place bp join bed_place_hospital_room bphr on bp.id=bphr.bed_place_id " +
+                "left join tbl on bphr.id=tbl.place_id where hospital_room_id = " + id_fondPal + " order by bp.id");
             Tabl.ItemsSource = Connect.ds.Tables["FondBed"].DefaultView;
             Tabl.AutoGenerateColumns = true;
             Tabl.HeadersVisibility = DataGridHeadersVisibility.Column;
@@ -136,42 +137,63 @@ namespace stac
             status = 1;
             Fill_HospitalRoom(id_dep);
             id_fondPal = -1;
+            action = 0;
         }
 
-        private void Tabl_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+   
+
+        private void ButtonAction_Click(object sender, RoutedEventArgs e)
         {
-            ButtonAction.Visibility = Visibility.Hidden;
+            DataRowView row;
+            row = (DataRowView)Tabl.CurrentItem;
+            CreateOrUpdateStacSluch createOrUpdateStacSluch = new CreateOrUpdateStacSluch();
+            if (row == null)
+            {
+                createOrUpdateStacSluch.ShowDialog();
+                Fill_BedPlace(id_fondPal);
+                return;
+            }
+            row = (DataRowView)Tabl.CurrentItem;
+            id_sluch = Convert.ToInt32(row["Случай"]);
+            createOrUpdateStacSluch.ShowDialog();
+            Fill_BedPlace(id_fondPal);
+        }
+
+        
+
+        private void Tabl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
             if (status != 2) return;
+            if (id_sluch != -1) return;
+
             string pac;
             string stat;
 
             DataRowView row = (DataRowView)Tabl.CurrentItem;
-            pac = (row["Пациент"]).ToString();
+            if (row == null) return;
+            pac = (row["Случай"]).ToString();
             stat = (row["Статус"]).ToString();
 
-            if (pac != "") 
-            { 
-                ButtonAction.Content = "Выписать"; 
+            if (pac != "")
+            {
+                ButtonAction.Content = "Выписать";
                 action = 1;
-                id_sluch = Convert.ToInt32(row["Случай"]);
             }
-            else if (stat == "Свободна") 
-            { 
-                ButtonAction.Content = "Прикрепить"; 
+            else if (stat == "Свободна")
+            {
+                ButtonAction.Content = "Прикрепить";
                 action = 2;
             }
-            else if (stat != "Свободна") 
-            { 
-                action = 0; 
-                return; 
+            else if (stat != "Свободна")
+            {
+                action = 0;
             }
             ButtonAction.Visibility = Visibility.Visible;
         }
 
-        private void ButtonAction_Click(object sender, RoutedEventArgs e)
+        private void Row_Click(object sender, MouseButtonEventArgs e)
         {
-            CreateOrUpdateStacSluch createOrUpdateStacSluch = new CreateOrUpdateStacSluch();
-            createOrUpdateStacSluch.ShowDialog();
+           
         }
     }
 }
