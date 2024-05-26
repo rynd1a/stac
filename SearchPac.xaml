@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Поиск пациента" Height="412" Width="800" Loaded="Window_Loaded">
     <Grid Background="#F4F4F4">
-        <TextBox x:Name="FIO" HorizontalAlignment="Left" Margin="192,59,0,0" FontSize="15" Background="#D9D9D9" Foreground="#747373" TextWrapping="Wrap" Text="ФИО" VerticalAlignment="Top" Width="290" Height="30" KeyUp="FIO_KeyUp" GotFocus="FIO_GotFocus" />
+        <TextBox x:Name="FIO" HorizontalAlignment="Left" Margin="192,59,0,0" FontSize="15" Background="#D9D9D9" Foreground="#747373" TextWrapping="Wrap" VerticalAlignment="Top" Width="290" Height="30" KeyUp="FIO_KeyUp" />
         <Button x:Name="ButtonDelDoc" FontSize="15" Content="Отмена" HorizontalAlignment="Left" Margin="509,59,0,0" VerticalAlignment="Top" Foreground="White" Height="30" Width="104" Background="#34495E" Click="ButtonDelDoc_Click" />
         <DataGrid x:Name="PacTable" d:ItemsSource="{d:SampleData ItemCount=2}" ColumnWidth="*" Margin="138,112,138,100">
             <DataGrid.ItemContainerStyle>
@@ -16,5 +16,6 @@
                 </Style>
             </DataGrid.ItemContainerStyle>
         </DataGrid>
+        <Label Foreground="#747373" Content="ФИО" HorizontalAlignment="Left" Margin="192,36,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024"/>
     </Grid>
 </Window>

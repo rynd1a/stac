@@ -13,5 +13,7 @@
         <Button x:Name="ButtonClose" FontSize="15" Content="Отмена" HorizontalAlignment="Left" Margin="250,224,0,0" VerticalAlignment="Top" Foreground="White" Height="30" Width="120" Background="#34495E" Click="ButtonClose_Click"  />
         <ComboBox x:Name="Medic" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Width="290" Background="#D9D9D9" Foreground="#747373" Height="30" DisplayMemberPath="name" SelectedValuePath="id">
         </ComboBox>
+        <Label Foreground="#747373" Content="Пользователь" HorizontalAlignment="Left" Margin="80,77,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024"/>
+        <Label Foreground="#747373" Content="Врач" HorizontalAlignment="Left" Margin="80,129,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024"/>
     </Grid>
 </Window>

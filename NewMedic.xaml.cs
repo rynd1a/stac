@@ -19,24 +19,6 @@ namespace stac
             this.Close();
         }
 
-        private void Nam_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (Nam.Text == "Имя")
-            Nam.Text = "";
-        }
-
-        private void Fam_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (Fam.Text == "Фамилия")
-                Fam.Text = "";
-        }
-
-        private void Patr_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (Patr.Text == "Отчество")
-                Patr.Text = "";
-        }
-
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
             string sql;
@@ -72,9 +54,9 @@ namespace stac
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            Nam.Text = "Имя";
-            Fam.Text = "Фамилия";
-            Patr.Text = "Отчество";
+            Nam.Text = "";
+            Fam.Text = "";
+            Patr.Text = "";
 
             Medics.id_vrach = -1;
         }

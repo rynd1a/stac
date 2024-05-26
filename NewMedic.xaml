@@ -7,14 +7,18 @@
         mc:Ignorable="d"
         Title="Врач" Height="450" Width="800" Loaded="Window_Loaded" Closed="Window_Closed">
     <Grid Background="#F4F4F4">
-        <TextBox x:Name="Nam" HorizontalAlignment="Center" Margin="0,130,0,0" FontSize="15" Background="#D9D9D9" Foreground="#747373" TextWrapping="Wrap" Text="Имя" VerticalAlignment="Top" Width="290" Height="30" GotFocus="Nam_GotFocus" />
-        <TextBox x:Name="Fam" HorizontalAlignment="Center" Margin="0,85,0,0" FontSize="15" Background="#D9D9D9" Foreground="#747373" TextWrapping="Wrap" Text="Фамилия" VerticalAlignment="Top" Width="290" Height="30" GotFocus="Fam_GotFocus" />
-        <TextBox x:Name="Patr" HorizontalAlignment="Center" Margin="0,175,0,0" FontSize="15" Background="#D9D9D9" Foreground="#747373" TextWrapping="Wrap" Text="Отчество" VerticalAlignment="Top" Width="290" Height="30" GotFocus="Patr_GotFocus" />
-        <Button x:Name="ButtonSave" FontSize="15" Content="Сохранить" HorizontalAlignment="Left" Margin="255,273,0,0" VerticalAlignment="Top" Foreground="White" Height="30" Width="120" Background="#34495E" Click="ButtonSave_Click" />
-        <Button x:Name="ButtonClose" FontSize="15" Content="Отмена" HorizontalAlignment="Left" Margin="425,273,0,0" VerticalAlignment="Top" Foreground="White" Height="30" Width="120" Background="#34495E" Click="ButtonClose_Click" />
+        <TextBox x:Name="Nam" HorizontalAlignment="Center" Margin="0,136,0,0" FontSize="15" Background="#D9D9D9" Foreground="#747373" TextWrapping="Wrap" VerticalAlignment="Top" Width="290" Height="30"/>
+        <TextBox x:Name="Fam" HorizontalAlignment="Center" Margin="0,85,0,0" FontSize="15" Background="#D9D9D9" Foreground="#747373" TextWrapping="Wrap"  VerticalAlignment="Top" Width="290" Height="30"  />
+        <TextBox x:Name="Patr" HorizontalAlignment="Center" Margin="0,187,0,0" FontSize="15" Background="#D9D9D9" Foreground="#747373" TextWrapping="Wrap"  VerticalAlignment="Top" Width="290" Height="30" />
+        <Button x:Name="ButtonSave" FontSize="15" Content="Сохранить" HorizontalAlignment="Left" Margin="255,292,0,0" VerticalAlignment="Top" Foreground="White" Height="30" Width="120" Background="#34495E" Click="ButtonSave_Click" />
+        <Button x:Name="ButtonClose" FontSize="15" Content="Отмена" HorizontalAlignment="Left" Margin="425,292,0,0" VerticalAlignment="Top" Foreground="White" Height="30" Width="120" Background="#34495E" Click="ButtonClose_Click" />
         <ComboBox x:Name="Dep" DisplayMemberPath="name"
                   SelectedValuePath="id" FontSize="15"
-                  HorizontalAlignment="Center" Margin="0,217,0,0" VerticalAlignment="Top" Width="290" Background="#D9D9D9" Foreground="#747373" Height="30">
+                  HorizontalAlignment="Center" Margin="0,239,0,0" VerticalAlignment="Top" Width="290" Background="#D9D9D9" Foreground="#747373" Height="30">
         </ComboBox>
+        <Label Foreground="#747373" Content="Фамилия" HorizontalAlignment="Left" Margin="255,63,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024"/>
+        <Label Foreground="#747373" Content="Имя" HorizontalAlignment="Left" Margin="255,115,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024"/>
+        <Label Foreground="#747373" Content="Отделение" HorizontalAlignment="Left" Margin="255,217,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024"/>
+        <Label Foreground="#747373" Content="Отчество" HorizontalAlignment="Left" Margin="255,166,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024"/>
     </Grid>
 </Window>

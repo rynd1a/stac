@@ -153,9 +153,6 @@
     <Compile Include="Fond.xaml.cs">
       <DependentUpon>Fond.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TransfPac.xaml.cs">
-      <DependentUpon>TransfPac.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Users.xaml.cs">
       <DependentUpon>Users.xaml</DependentUpon>
     </Compile>
@@ -234,10 +231,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Fond.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="TransfPac.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

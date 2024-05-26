@@ -56,6 +56,8 @@ namespace stac
             ButtonSave.Visibility = Visibility.Hidden;
             Rez.Visibility = Visibility.Visible;
             CloseS.Visibility = Visibility.Visible;
+            LabelCloseS.Visibility = Visibility.Visible;
+            LabelRez.Visibility = Visibility.Visible;
             Connect.Table_Fill("UpdSluch", "select s.id, patient_id, (p.fam || ' ' || p.name || ' ' || p.patr) as Пациент, " +
                "medic_id, place_id, diagnosis, s.status, date_create, date_close, result from stac_sluch s " +
                "join patient p on s.patient_id=p.id where s.id=" + Fond.getCurrentRowNumber() + " order by s.id");
@@ -77,18 +79,6 @@ namespace stac
                 Vrach.SelectedIndex = i;
             }
 
-        }
-
-        private void Diag_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (Diag.Text == "Диагноз")
-                Diag.Text = "";
-        }
-
-        private void Status_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (Status.Text == "Статус")
-                Status.Text = "";
         }
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)

@@ -35,9 +35,9 @@ namespace stac
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            Ser.Text = "Серия";
-            Num.Text = "Номер";
-            Issued.Text = "Кем выдан";
+            Ser.Text = "";
+            Num.Text = "";
+            Issued.Text = "";
             Dat.Text = "";
             Type.SelectedIndex = -1;
 
@@ -92,24 +92,6 @@ namespace stac
         {
             CreateorUpdatePac.id_doc = -1;
             this.Close();
-        }
-
-        private void Ser_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (Ser.Text == "Серия")
-                Ser.Text = "";
-        }
-
-        private void Num_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (Num.Text == "Номер")
-                Num.Text = "";
-        }
-
-        private void Issued_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (Issued.Text == "Кем выдан")
-                Issued.Text = "";
         }
     }
 }
