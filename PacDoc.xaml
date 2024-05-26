@@ -18,7 +18,7 @@
         </ComboBox>
         <Button x:Name="ButtonSave" FontSize="15" Content="Сохранить" HorizontalAlignment="Left" Margin="73,291,0,0" VerticalAlignment="Top" Foreground="White" Height="36" Width="100" Background="#34495E" RenderTransformOrigin="0.503,0.543" Click="ButtonSave_Click" />
         <Button x:Name="ButtonClose" FontSize="15" Content="Отмена" HorizontalAlignment="Left" Margin="263,291,0,0" VerticalAlignment="Top" Foreground="White" Height="36" Width="100" Background="#34495E" RenderTransformOrigin="0.399,-0.599" Click="ButtonClose_Click" />
-        <Label Foreground="#747373" Content="Тип" HorizontalAlignment="Left" Margin="73,2,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024"/>
+        <Label Foreground="#747373" Content="Тип*" HorizontalAlignment="Left" Margin="73,2,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024"/>
         <Label Foreground="#747373" Content="Серия" HorizontalAlignment="Left" Margin="73,52,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024"/>
         <Label Foreground="#747373" Content="Номер" HorizontalAlignment="Left" Margin="73,103,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024"/>
         <Label Foreground="#747373" Content="Кем выдан" HorizontalAlignment="Left" Margin="73,156,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024"/>

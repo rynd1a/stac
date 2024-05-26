@@ -64,6 +64,18 @@ namespace stac
             if (result == "No") return;
             else if (result == "Yes")
             {
+                if (Prof.Text == "")
+                {
+                    MessageBox.Show("Профиль койки является обязательным для заполнения", "Внимание");
+                    return;
+                }
+
+                if (Status.Text == "")
+                {
+                    MessageBox.Show("Статус койки является обязательным для заполнения", "Внимание");
+                    return;
+                }
+
                 if (BedPlaceAndRoom.getCurrentBedRowNumber() != -1)
                 {
                     sql = "update bed_place set type='" + Prof.Text + "', status='" +

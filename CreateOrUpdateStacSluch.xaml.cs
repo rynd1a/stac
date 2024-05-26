@@ -1,24 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace stac
 {
-    /// <summary>
-    /// Логика взаимодействия для CreateOrUpdateStacSluch.xaml
-    /// </summary>
     public partial class CreateOrUpdateStacSluch : Window
     {
         public CreateOrUpdateStacSluch()
@@ -78,7 +62,6 @@ namespace stac
                
                 Vrach.SelectedIndex = i;
             }
-
         }
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
@@ -110,6 +93,12 @@ namespace stac
             string result;
             string id_medic = "";
 
+            if (Vrach.SelectedValue == null)
+            {
+                MessageBox.Show("Лечащий врач является обязательным для заполнения", "Внимание");
+                return;
+            }
+
             for (int i = 0; i < Connect.ds.Tables["Medic"].DefaultView.Count; i++)
                 if (Connect.ds.Tables["Medic"].DefaultView[i]["id"].ToString() == Vrach.SelectedValue.ToString())
                     id_medic = Connect.ds.Tables["Medic"].DefaultView[i]["id"].ToString();
@@ -119,6 +108,18 @@ namespace stac
             if (result == "No") return;
             else if (result == "Yes")
             {
+                if (id_pac == -1)
+                {
+                    MessageBox.Show("Пациент является обязательным для заполнения", "Внимание");
+                    return;
+                }
+
+                if (OpenS.Text == "")
+                {
+                    MessageBox.Show("Дата прикрепления является обязательной для заполнения", "Внимание");
+                    return;
+                }
+
                 sql = "insert into stac_sluch(patient_id, medic_id, place_id, diagnosis, status, date_create) " +
                     " values(" + id_pac + ", " + id_medic + ", " + Fond.getCurrentPlace() + ", '" + Diag.Text + "', '" 
                     + Status.Text + "', '" + OpenS.Text + "')";
@@ -126,7 +127,6 @@ namespace stac
 
                 sql = "update bed_place set status='Занята' where id = (select bed_place_id from bed_place_hospital_room where id=" + Fond.getCurrentPlace() + ")";
                 if (!Connect.Modification_Execute(sql)) return;
-
             }
 
             this.Close();

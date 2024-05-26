@@ -1,27 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Net.NetworkInformation;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace stac
 {
-    /// <summary>
-    /// Логика взаимодействия для Fond.xaml
-    /// </summary>
     public partial class Fond : Page
     {
         public Fond()
@@ -36,6 +20,8 @@ namespace stac
         public static int action = 0; // 1 - Выписать, 2 - Прикрепить
         public static int id_sluch = -1;
         public static int id_place = -1;
+        public static string gender = "";
+
         DataRowView row;
 
 
@@ -46,12 +32,17 @@ namespace stac
             {
                 DataRowView row = (DataRowView)Tabl.CurrentItem;
                 id_fondPal = Convert.ToInt32(row["Номер"]);
+                gender = row["Пол"].ToString();
 
                 Tabl.SelectedIndex = -1;
                 Fill_BedPlace(id_fondPal);
                 return;
             }
             
+        }
+        public static string getCurrentGenderRowNumber()
+        {
+            return gender;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -202,7 +193,9 @@ namespace stac
             }
             else if (stat != "Свободна")
             {
+                ButtonAction.Visibility = Visibility.Hidden;
                 action = 0;
+                return;
             }
             ButtonAction.Visibility = Visibility.Visible;
         }

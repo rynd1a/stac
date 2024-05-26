@@ -6,9 +6,6 @@ using System.Windows.Input;
 
 namespace stac
 {
-    /// <summary>
-    /// Логика взаимодействия для BedPlaceAndRoom.xaml
-    /// </summary>
     public partial class BedPlaceAndRoom : Page
     {
         public BedPlaceAndRoom()
@@ -136,6 +133,8 @@ namespace stac
         {
             return id_pal;
         }
+
+       
 
         private void ButtonBack_Click(object sender, RoutedEventArgs e)
         {

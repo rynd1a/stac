@@ -27,5 +27,7 @@
             <ComboBoxItem Content="Резерв"/>
             <ComboBoxItem Content="Свободна"/>
         </ComboBox>
+        <Label Foreground="#747373" Content="Профиль*" HorizontalAlignment="Left" Margin="80,76,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024"/>
+        <Label Foreground="#747373" Content="Статус*" HorizontalAlignment="Left" Margin="80,129,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024"/>
     </Grid>
 </Window>

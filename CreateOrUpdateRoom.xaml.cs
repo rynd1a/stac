@@ -1,23 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace stac
 {
-    /// <summary>
-    /// Логика взаимодействия для CreateOrUpdateRoom.xaml
-    /// </summary>
     public partial class CreateOrUpdateRoom : Window
     {
         public CreateOrUpdateRoom()
@@ -82,6 +67,12 @@ namespace stac
             string sql;
             string id_dep = "";
 
+            if (Dep.Text == "")
+            {
+                MessageBox.Show("Отделение палаты является обязательным для заполнения", "Внимание");
+                return;
+            }
+
             for (int i = 0; i < Connect.ds.Tables["Deps"].DefaultView.Count; i++)
                 if (Connect.ds.Tables["Deps"].DefaultView[i]["id"].ToString() == Dep.SelectedValue.ToString())
                     id_dep = Connect.ds.Tables["Deps"].DefaultView[i]["id"].ToString();
@@ -91,6 +82,23 @@ namespace stac
             if (result == "No") return;
             else if (result == "Yes")
             {
+                if (Status.Text == "")
+                {
+                    MessageBox.Show("Статус палаты является обязательным для заполнения", "Внимание");
+                    return;
+                }
+                if (Type.Text == "")
+                {
+                    MessageBox.Show("Тип палаты является обязательным для заполнения", "Внимание");
+                    return;
+                }
+                if (Gender.Text == "")
+                {
+                    MessageBox.Show("Пол является обязательным для заполнения", "Внимание");
+                    return;
+                }
+                
+
                 if (BedPlaceAndRoom.getCurrentPalRowNumber() != -1)
                 {
                     sql = "update hospital_room set status='" + Status.Text + "', type='" +

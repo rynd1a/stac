@@ -26,10 +26,10 @@
             <ComboBoxItem Content="Переведен - без перемен"/>
             <ComboBoxItem Content="Переведен - ухудшение"/>
         </ComboBox>
-        <Label Foreground="#747373" Content="Пациент" HorizontalAlignment="Left" Margin="209,13,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024"/>
-        <Label Foreground="#747373" Content="Дата прикрепления" HorizontalAlignment="Left" Margin="209,65,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024"/>
+        <Label Foreground="#747373" Content="Пациент*" HorizontalAlignment="Left" Margin="209,13,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024"/>
+        <Label Foreground="#747373" Content="Дата прикрепления*" HorizontalAlignment="Left" Margin="209,65,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024"/>
         <Label Foreground="#747373" Content="Диагноз" HorizontalAlignment="Left" Margin="209,118,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024"/>
-        <Label Foreground="#747373" Content="Лечащий врач" HorizontalAlignment="Left" Margin="209,169,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024"/>
+        <Label Foreground="#747373" Content="Лечащий врач*" HorizontalAlignment="Left" Margin="209,169,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024"/>
         <Label Foreground="#747373" Content="Статус" HorizontalAlignment="Left" Margin="209,220,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024"/>
         <Label x:Name="LabelCloseS" Foreground="#747373" Content="Дата закрытия" HorizontalAlignment="Left" Margin="210,271,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024" Visibility="Hidden"/>
         <Label x:Name="LabelRez" Foreground="#747373" Content="Результат" HorizontalAlignment="Left" Margin="210,323,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024" Visibility="Hidden"/>

@@ -3,9 +3,6 @@ using System.Windows;
 
 namespace stac
 {
-    /// <summary>
-    /// Логика взаимодействия для NewMedic.xaml
-    /// </summary>
     public partial class NewMedic : Window
     {
         public NewMedic()
@@ -25,6 +22,12 @@ namespace stac
             string result;
             string id_dep = "";
 
+            if (Dep.Text == "")
+            {
+                MessageBox.Show("Отделение врача является обязательным для заполнения", "Внимание");
+                return;
+            }
+
             for (int i = 0; i < Connect.ds.Tables["DepartMed"].DefaultView.Count; i++)
                 if (Connect.ds.Tables["DepartMed"].DefaultView[i]["id"].ToString() == Dep.SelectedValue.ToString())
                     id_dep = Connect.ds.Tables["DepartMed"].DefaultView[i]["id"].ToString();
@@ -34,6 +37,18 @@ namespace stac
             if (result == "No") return;
             else if (result == "Yes")
             {
+                if (Fam.Text == "")
+                {
+                    MessageBox.Show("Фамилия врача является обязательной для заполнения", "Внимание");
+                    return;
+                }
+
+                if (Nam.Text == "")
+                {
+                    MessageBox.Show("Имя врача является обязательным для заполнения", "Внимание");
+                    return;
+                }
+
                 if (Medics.getCurrentRowNumber() != -1)
                 {
                     sql = "update medic set fam='" + Fam.Text.Replace(" ", "") + "', name='" +

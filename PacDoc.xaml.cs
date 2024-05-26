@@ -3,9 +3,6 @@ using System.Windows;
 
 namespace stac
 {
-    /// <summary>
-    /// Логика взаимодействия для PacDoc.xaml
-    /// </summary>
     public partial class PacDoc : Window
     {
         public PacDoc()
@@ -54,6 +51,12 @@ namespace stac
             if (result == "No") return;
             else if (result == "Yes")
             {
+                if (Type.Text == "")
+                {
+                    MessageBox.Show("Тип документа является обязательным для заполнения", "Внимание");
+                    return;
+                }
+
                 try { 
                     Convert.ToInt32(Num.Text); 
                 } catch (FormatException) {

@@ -14,7 +14,6 @@
         <ComboBox x:Name="Gender" HorizontalAlignment="Left" Margin="38,311,0,0" FontSize="15" VerticalAlignment="Top" Width="290" Background="#D9D9D9" Foreground="#747373" Height="30">
             <ComboBoxItem Content="Женский"/>
             <ComboBoxItem Content="Мужской"/>
-            <ComboBoxItem Content="Неизвестно"/>
         </ComboBox>
         <TextBox x:Name="Phone" HorizontalAlignment="Left" Margin="38,361,0,0" FontSize="15" Background="#D9D9D9" Foreground="#747373" TextWrapping="Wrap" VerticalAlignment="Top" Width="290" Height="30"  />
         <TextBox x:Name="Email" HorizontalAlignment="Left" Margin="38,412,0,0" FontSize="15" Background="#D9D9D9" Foreground="#747373" TextWrapping="Wrap" VerticalAlignment="Top" Width="290" Height="30"  />
@@ -43,8 +42,8 @@
         </DataGrid>
         <Button x:Name="ButtonAddDoc" FontSize="15" Content="Добавить" HorizontalAlignment="Left" Margin="447,368,0,0" VerticalAlignment="Top" Foreground="White" Height="23" Width="104" Background="#34495E" Click="ButtonAddDoc_Click" />
         <Button x:Name="ButtonDelDoc" FontSize="15" Content="Удалить" HorizontalAlignment="Left" Margin="631,368,0,0" VerticalAlignment="Top" Foreground="White" Height="23" Width="104" Background="#34495E" />
-        <Label Foreground="#747373" Content="Фамилия" HorizontalAlignment="Left" Margin="38,79,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024"/>
-        <Label Foreground="#747373" Content="Имя" HorizontalAlignment="Left" Margin="38,134,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024"/>
+        <Label Foreground="#747373" Content="Фамилия*" HorizontalAlignment="Left" Margin="38,79,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024"/>
+        <Label Foreground="#747373" Content="Имя*" HorizontalAlignment="Left" Margin="38,134,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024"/>
         <Label Foreground="#747373" Content="Отчество" HorizontalAlignment="Left" Margin="38,187,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024"/>
         <Label Foreground="#747373" Content="Дата рождения" HorizontalAlignment="Left" Margin="37,237,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024" Height="26"/>
         <Label Foreground="#747373" Content="Пол" HorizontalAlignment="Left" Margin="38,290,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024"/>

@@ -1,16 +1,11 @@
-﻿using System.Security.Cryptography;
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Data;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace stac
 {
-    /// <summary>
-    /// Логика взаимодействия для CreateorUpdatePac.xaml
-    /// </summary>
     public partial class CreateorUpdatePac : Window
     {
         public CreateorUpdatePac()
@@ -159,12 +154,12 @@ namespace stac
             {
                 if (Nam.Text == "" || Nam.Text == "Имя")
                 {
-                    MessageBox.Show("Поля \"Имя\" обязательно для заполнения", "Ошибка");
+                    MessageBox.Show("Имя пациента является обязательным для заполнения", "Ошибка");
                     return;
                 }
                 if (Fam.Text == "" || Fam.Text == "Фамилия")
                 {
-                    MessageBox.Show("Поля \"Фамилия\" обязательно для заполнения", "Ошибка");
+                    MessageBox.Show("Фамилия пациента является обязательной для заполнения", "Ошибка");
                     return;
                 }
 

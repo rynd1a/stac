@@ -16,9 +16,9 @@
                   SelectedValuePath="id" FontSize="15"
                   HorizontalAlignment="Center" Margin="0,239,0,0" VerticalAlignment="Top" Width="290" Background="#D9D9D9" Foreground="#747373" Height="30">
         </ComboBox>
-        <Label Foreground="#747373" Content="Фамилия" HorizontalAlignment="Left" Margin="255,63,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024"/>
-        <Label Foreground="#747373" Content="Имя" HorizontalAlignment="Left" Margin="255,115,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024"/>
-        <Label Foreground="#747373" Content="Отделение" HorizontalAlignment="Left" Margin="255,217,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024"/>
+        <Label Foreground="#747373" Content="Фамилия*" HorizontalAlignment="Left" Margin="255,63,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024"/>
+        <Label Foreground="#747373" Content="Имя*" HorizontalAlignment="Left" Margin="255,115,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024"/>
+        <Label Foreground="#747373" Content="Отделение*" HorizontalAlignment="Left" Margin="255,217,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024"/>
         <Label Foreground="#747373" Content="Отчество" HorizontalAlignment="Left" Margin="255,166,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.439,-0.024"/>
     </Grid>
 </Window>

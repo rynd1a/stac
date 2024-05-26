@@ -30,8 +30,6 @@ namespace stac
             }
         }
 
-       
-
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
             string sql;
@@ -41,6 +39,18 @@ namespace stac
             if (result == "No") return;
             else if (result == "Yes")
             {
+                if (Adr.Text == "")
+                {
+                    MessageBox.Show("Адрес является обязательным для заполнения", "Внимание");
+                    return;
+                }
+
+                if (Type.Text == "")
+                {
+                    MessageBox.Show("Тип адреса является обязательным для заполнения", "Внимание");
+                    return;
+                }
+
                 if (CreateorUpdatePac.getCurrentAdrRowNumber() != -1)
                 {
                     sql = "update address set type='" + Type.Text + "', adr='" +
