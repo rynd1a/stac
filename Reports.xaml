@@ -9,11 +9,11 @@
       Title="Reports">
 
     <Grid Background="#F4F4F4">
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,72,0,-72" ColumnWidth="*"/>
-        <DatePicker HorizontalAlignment="Left" FontSize="15" Margin="102,34,0,0" VerticalAlignment="Top" Width="160"/>
-        <DatePicker HorizontalAlignment="Left" FontSize="15" Margin="550,34,0,0" VerticalAlignment="Top" Width="160" RenderTransformOrigin="4.413,0.721"/>
+        <DataGrid x:Name="Tabl" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,75,0,90" ColumnWidth="*" IsReadOnly="True"/>
+        <DatePicker x:Name="First" HorizontalAlignment="Left" FontSize="15" Margin="102,34,0,0" VerticalAlignment="Top" Width="160"/>
+        <DatePicker x:Name="Second" HorizontalAlignment="Left" FontSize="15" Margin="550,34,0,0" VerticalAlignment="Top" Width="160" RenderTransformOrigin="4.413,0.721" CalendarClosed="DatePicker_CalendarClosed"/>
         <Label Foreground="#747373"  Content="Дата начала формирования" HorizontalAlignment="Left" Margin="102,8,0,0" VerticalAlignment="Top"/>
         <Label Foreground="#747373"  Content="Дата окончания формирования" HorizontalAlignment="Left" Margin="550,10,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="ButtonPrint" FontSize="15" Content="Печать" HorizontalAlignment="Center" Margin="0,404,0,0" VerticalAlignment="Top" Foreground="White" Height="36" Width="124" Background="#34495E" />
+        <Button x:Name="ButtonPrint" FontSize="15" Content="Печать" HorizontalAlignment="Center" Margin="0,397,0,0" VerticalAlignment="Top" Foreground="White" Height="36" Width="124" Background="#34495E" Click="ButtonPrint_Click" />
     </Grid>
 </Page>
