@@ -3,9 +3,6 @@ using System.Windows;
 
 namespace stac
 {
-    /// <summary>
-    /// Логика взаимодействия для PacAdr.xaml
-    /// </summary>
     public partial class PacAdr : Window
     {
         public PacAdr()

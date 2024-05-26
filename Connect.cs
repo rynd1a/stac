@@ -1,45 +1,47 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
+﻿using System.Data;
 using System.Windows;
 using Npgsql;
+using System.IO;
+using System;
 
 
 namespace stac
 {
     class Connect
     {
-        public static NpgsqlConnection connection = new NpgsqlConnection("Server=localhost; Port=5432; User Id=postgres; Password=root; Database=stac;");
-
         public static DataSet ds = new DataSet();
+
+        public static NpgsqlConnection Connection()
+        {
+            string line = "";
+            StreamReader sr = new StreamReader(@"Config.txt");
+            line = sr.ReadLine();
+            NpgsqlConnection connection = new NpgsqlConnection(line);
+            return connection;
+        }
 
         public static void Table_Fill(string name, string sql)
         {
             if (ds.Tables[name] != null)
                 ds.Tables[name].Clear();
             NpgsqlDataAdapter dat;
-            dat = new NpgsqlDataAdapter(sql, connection);
+            dat = new NpgsqlDataAdapter(sql, Connection());
             dat.Fill(ds, name);
-            connection.Close();
+            Connection().Close();
         }
 
         public static bool Modification_Execute(string sql)
         {
-            NpgsqlCommand com = new NpgsqlCommand(sql, connection);
-            connection.Open();
+            NpgsqlCommand com = new NpgsqlCommand(sql, Connection());
+            Connection().Open();
             try {
                 com.ExecuteNonQuery();
             } catch (NpgsqlException) {
-                MessageBox.Show("Обновление базы данных не было выполнено из-за некорректно указанных" +
-                    " обновляемых данных либо отсутствующих, но при этом обязательных", "Ошибка");
-                connection.Close(); 
+                MessageBox.Show("Обновление базы данных не было выполнено", "Ошибка");
+                Connection().Close(); 
                 return false;
             }
-            connection.Close();
+            Connection().Close();
             return true;
         }
     }

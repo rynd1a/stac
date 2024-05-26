@@ -76,6 +76,14 @@ namespace stac
                 return;
             }
             id_pac = Convert.ToInt32(Connect.ds.Tables["Pac"].Rows[index]["Номер"]);
+            Connect.Table_Fill("PacSluch", "select count(id) from stac_sluch where patient_id=" + id_pac);
+
+            if (Connect.ds.Tables["PacSluch"].Rows.Count > 0)
+            {
+                MessageBox.Show("У пациента есть госпитализация. Удаление невозможно", "Ошибка");
+                return;
+            }
+
             MessageBoxButton buttons = MessageBoxButton.YesNo;
             string result = MessageBox.Show("Вы точно хотите удалить запись?", "Удаление", buttons).ToString();
             if (result == "No") return;

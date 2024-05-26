@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data;
-using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -26,7 +25,7 @@ namespace stac
 
         private void Table_Fill()
         {
-            Connect.Table_Fill("Medic", "select m.id as Номер, fam as Фамилия, m.name as Имя, patr as Отчество, d.name as Отделение from medic m join department d on m.department_id=d.id order by m.id");
+            Connect.Table_Fill("Medics", "select m.id as Номер, fam as Фамилия, m.name as Имя, patr as Отчество, d.name as Отделение from medic m join department d on m.department_id=d.id order by m.id");
             MedicsTable.ItemsSource = Connect.ds.Tables["Medic"].DefaultView;
             MedicsTable.AutoGenerateColumns = true;
             MedicsTable.HeadersVisibility = DataGridHeadersVisibility.Column;
@@ -70,7 +69,7 @@ namespace stac
                 MessageBox.Show("Выберите строку для удаления!");
                 return;
             }
-            id_vrach = Convert.ToInt32(Connect.ds.Tables["Medic"].Rows[index]["Номер"]);
+            id_vrach = Convert.ToInt32(Connect.ds.Tables["Medics"].Rows[index]["Номер"]);
             MessageBoxButton buttons = MessageBoxButton.YesNo;
             string result = MessageBox.Show("Вы точно хотите удалить запись?", "Удаление", buttons).ToString();
             if (result == "No") return;
@@ -78,7 +77,7 @@ namespace stac
             {
                 string sql = "delete from medic where id = " + id_vrach;
                 if (!Connect.Modification_Execute(sql)) return;
-                Connect.ds.Tables["Medic"].Rows.RemoveAt(index);
+                Connect.ds.Tables["Medics"].Rows.RemoveAt(index);
             }
         }
     }
