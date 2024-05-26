@@ -1,16 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace stac
 {
@@ -74,15 +63,23 @@ namespace stac
 
                 if (CreateorUpdatePac.getCurrentDocRowNumber() != -1)
                 {
-                    sql = "update document set type='" + Type.Text + "', ser=" +
-                        Ser.Text + ", num=" + Num.Text + ", issued='" + Issued.Text +
+                    sql = "update document set type='" + Type.Text + "', ser='" +
+                        Ser.Text + "', num=" + Num.Text + ", issued='" + Issued.Text +
                         "', date_issued='" +  Dat.Text + "' where id=" + CreateorUpdatePac.getCurrentDocRowNumber();
                     if (!Connect.Modification_Execute(sql)) return;
                 }
                 else
                 {
+                    Connect.Table_Fill("TypeDoc", "select id from document where type='" + Type.Text + "' and patient_id = " + Pacients.getCurrentRowNumber());
+
+                    if (Connect.ds.Tables["TypeDoc"].Rows.Count > 0)
+                    {
+                        MessageBox.Show("Пациент не может иметь два документа одного типа.", "Ошибка");
+                        return;
+                    }
+
                     sql = "insert into document(patient_id, type, ser, num, issued, date_issued) values(" + Pacients.getCurrentRowNumber() +
-                        ", '" + Type.Text + "', " + Ser.Text + ", " + Num.Text + ", '" + Issued.Text + 
+                        ", '" + Type.Text + "', '" + Ser.Text + "', " + Num.Text + ", '" + Issued.Text + 
                         "', '" + Dat.Text + "')";
                     if (!Connect.Modification_Execute(sql)) return;
 

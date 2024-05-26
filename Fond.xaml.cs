@@ -35,6 +35,9 @@ namespace stac
         private static int status = -1;
         public static int action = 0; // 1 - Выписать, 2 - Прикрепить
         public static int id_sluch = -1;
+        public static int id_place = -1;
+        DataRowView row;
+
 
         private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -79,6 +82,11 @@ namespace stac
             return id_sluch;
         }
 
+        public static int getCurrentPlace()
+        {
+            return id_place;
+        }
+
         private void Fill_HospitalRoom(int id_dep)
         {
             if (Login.id_userVrach == "")
@@ -106,18 +114,19 @@ namespace stac
         {
             Connect.Table_Fill("FondBed", "with tbl as (select s.id, (p.fam || substring(p.name, 1, 1) || '. ' || substring(p.patr, 1, 1)) as pac, s.diagnosis, place_id " +
                 " from stac_sluch s " +
-                " join patient p on s.patient_id=p.id where date_close is null) select bp.id as Номер, bp.status as Статус, tbl.id as Случай, " +
+                " join patient p on s.patient_id=p.id where date_close is null) select bp.id as Номер, bp.status as Статус, bphr.id as Место, tbl.id as Случай, " +
                 " pac as Пациент, tbl.diagnosis as Диагноз from bed_place bp join bed_place_hospital_room bphr on bp.id=bphr.bed_place_id " +
                 "left join tbl on bphr.id=tbl.place_id where hospital_room_id = " + id_fondPal + " order by bp.id");
             Tabl.ItemsSource = Connect.ds.Tables["FondBed"].DefaultView;
             Tabl.AutoGenerateColumns = true;
             Tabl.HeadersVisibility = DataGridHeadersVisibility.Column;
             Tabl.CanUserAddRows = false;
-            Tabl.Columns[0].Visibility = Visibility.Hidden;
+            Tabl.Columns[2].Visibility = Visibility.Hidden;
+            Tabl.Columns[3].Visibility = Visibility.Hidden;
             Tabl.Columns[0].IsReadOnly = true;
             Tabl.Columns[1].IsReadOnly = true;
-            Tabl.Columns[2].IsReadOnly = true;
-            Tabl.Columns[3].IsReadOnly = true;
+            Tabl.Columns[4].IsReadOnly = true;
+            Tabl.Columns[5].IsReadOnly = true;
             status = 2;
             ButtonBack.Visibility = Visibility.Visible;
             ButtonAction.Visibility = Visibility.Hidden;
@@ -141,35 +150,42 @@ namespace stac
         }
 
    
-
+        
         private void ButtonAction_Click(object sender, RoutedEventArgs e)
         {
-            DataRowView row;
-            row = (DataRowView)Tabl.CurrentItem;
             CreateOrUpdateStacSluch createOrUpdateStacSluch = new CreateOrUpdateStacSluch();
-            if (row == null)
+            if (action == 2)
             {
+                id_place = Convert.ToInt32(row["Место"]);
                 createOrUpdateStacSluch.ShowDialog();
                 Fill_BedPlace(id_fondPal);
                 return;
             }
-            row = (DataRowView)Tabl.CurrentItem;
+            // row = (DataRowView)Tabl.CurrentItem;
             id_sluch = Convert.ToInt32(row["Случай"]);
             createOrUpdateStacSluch.ShowDialog();
             Fill_BedPlace(id_fondPal);
+            row = null;
         }
 
         
 
         private void Tabl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            
+        }
+
+        private void Tabl_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
             if (status != 2) return;
-            if (id_sluch != -1) return;
+            if (id_sluch != -1)
+            {
+                id_sluch = -1;
+            }
 
             string pac;
             string stat;
-
-            DataRowView row = (DataRowView)Tabl.CurrentItem;
+            row = (DataRowView)Tabl.CurrentItem;
             if (row == null) return;
             pac = (row["Случай"]).ToString();
             stat = (row["Статус"]).ToString();
@@ -189,11 +205,6 @@ namespace stac
                 action = 0;
             }
             ButtonAction.Visibility = Visibility.Visible;
-        }
-
-        private void Row_Click(object sender, MouseButtonEventArgs e)
-        {
-           
         }
     }
 }

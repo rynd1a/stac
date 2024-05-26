@@ -34,7 +34,7 @@ namespace stac
 
             for (int i = 0; i < Type.Items.Count; i++)
             {
-                if (Type.Items[i].ToString() == Connect.ds.Tables["UpdAdr"].DefaultView[0]["type"].ToString())
+                if (Type.Items[i].ToString() != Connect.ds.Tables["UpdAdr"].DefaultView[0]["type"].ToString())
                 {
                     continue;
                 }
@@ -65,6 +65,14 @@ namespace stac
                 }
                 else
                 {
+                    Connect.Table_Fill("TypeAdr", "select id from address where type='" + Type.Text + "' and patient_id = " + Pacients.getCurrentRowNumber());
+
+                    if (Connect.ds.Tables["TypeAdr"].Rows.Count > 0)
+                    {
+                        MessageBox.Show("Пациент не может иметь два адреса одного типа.", "Ошибка");
+                        return;
+                    }
+
                     sql = "insert into address(patient_id, type, adr) values(" + Pacients.getCurrentRowNumber() +
                         ", '" + Type.Text + "', '" + Adr.Text + "')";
                     if (!Connect.Modification_Execute(sql)) return;
