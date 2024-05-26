@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:stac"
         mc:Ignorable="d"
-        Title="Поиск пациента" Height="412" Width="800" Loaded="Window_Loaded">
+        Title="Поиск пациента" Height="412" Width="800" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
     <Grid Background="#F4F4F4">
         <TextBox x:Name="FIO" HorizontalAlignment="Left" Margin="192,59,0,0" FontSize="15" Background="#D9D9D9" Foreground="#747373" TextWrapping="Wrap" VerticalAlignment="Top" Width="290" Height="30" KeyUp="FIO_KeyUp" />
         <Button x:Name="ButtonDelDoc" FontSize="15" Content="Отмена" HorizontalAlignment="Left" Margin="509,59,0,0" VerticalAlignment="Top" Foreground="White" Height="30" Width="104" Background="#34495E" Click="ButtonDelDoc_Click" />

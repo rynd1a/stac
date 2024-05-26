@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:stac"
         mc:Ignorable="d"
-        Title="Администратор" Height="600" Width="800">
+        Title="Администратор" Height="600" Width="800" WindowStartupLocation="CenterScreen">
 
     <Grid Background="#F4F4F4">
         <Rectangle HorizontalAlignment="Center" Height="30"  VerticalAlignment="Top" Width="800" Fill="#D9D9D9" Stroke="#D9D9D9"/>

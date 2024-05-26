@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:stac"
         mc:Ignorable="d"
-        Title="Авторизация" Height="600" Width="800">
+        Title="Авторизация" Height="600" Width="800" WindowStartupLocation="CenterScreen">
     <Grid Background="#F4F4F4">
         <Rectangle HorizontalAlignment="Center" Height="313" VerticalAlignment="Center" Width="352" Fill="White" RadiusY="15" RadiusX="15" />
         <Button x:Name="ButtonLogin" FontSize="15" Content="Войти" HorizontalAlignment="Center" Margin="0,368,0,0" VerticalAlignment="Top" Foreground="White" Height="36" Width="124" Click="ButtonLogin_Click" Background="#34495E" />

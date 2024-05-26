@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:stac"
         mc:Ignorable="d"
-        Title="" Height="430" Width="750" Closed="Window_Closed" Loaded="Window_Loaded">
+        Title="" Height="430" Width="750" Closed="Window_Closed" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
     <Grid Background="#F4F4F4">
         <TextBox x:Name="Pac" HorizontalAlignment="Left" Margin="209,35,0,0" FontSize="15" Background="#D9D9D9" Foreground="#747373" TextWrapping="Wrap" VerticalAlignment="Top" Width="290" Height="30" IsReadOnly="True"/>
         <TextBox x:Name="Diag" HorizontalAlignment="Left" Margin="209,140,0,0" FontSize="15" Background="#D9D9D9" Foreground="#747373" TextWrapping="Wrap" VerticalAlignment="Top" Width="290" Height="30"  />

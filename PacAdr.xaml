@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:stac"
         mc:Ignorable="d"
-        Title="Адрес" Height="300" Width="450" Loaded="Window_Loaded" Closed="Window_Closed">
+        Title="Адрес" Height="300" Width="450" Loaded="Window_Loaded" Closed="Window_Closed" WindowStartupLocation="CenterScreen">
     <Grid Background="#F4F4F4" Margin="0,4,0,-4">
         <TextBox x:Name="Adr" HorizontalAlignment="Left" Margin="73,116,0,0" FontSize="15" Background="#D9D9D9" Foreground="#747373" TextWrapping="Wrap" VerticalAlignment="Top" Width="290" Height="30" />
         <ComboBox x:Name="Type" HorizontalAlignment="Left" Margin="73,62,0,0" FontSize="15" VerticalAlignment="Top" Width="290" Background="#D9D9D9" Foreground="#747373" Height="30">

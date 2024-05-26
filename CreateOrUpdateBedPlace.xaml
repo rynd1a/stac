@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:stac"
         mc:Ignorable="d"
-        Title="Койка" Height="350" Width="450" Closed="Window_Closed" Loaded="Window_Loaded">
+        Title="Койка" Height="350" Width="450" Closed="Window_Closed" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
     <Grid Background="#F4F4F4">
         <ComboBox x:Name="Prof" FontSize="15" HorizontalAlignment="Center" Margin="0,99,0,0" VerticalAlignment="Top" Width="290" Background="#D9D9D9" Foreground="#747373" Height="30">
             <ComboBoxItem Content="реанимационная"/>
