@@ -26,7 +26,7 @@ namespace stac
         private void Table_Fill()
         {
             Connect.Table_Fill("Medics", "select m.id as Номер, fam as Фамилия, m.name as Имя, patr as Отчество, d.name as Отделение from medic m join department d on m.department_id=d.id order by m.id");
-            MedicsTable.ItemsSource = Connect.ds.Tables["Medic"].DefaultView;
+            MedicsTable.ItemsSource = Connect.ds.Tables["Medics"].DefaultView;
             MedicsTable.AutoGenerateColumns = true;
             MedicsTable.HeadersVisibility = DataGridHeadersVisibility.Column;
             MedicsTable.CanUserAddRows = false;
