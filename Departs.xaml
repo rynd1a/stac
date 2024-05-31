@@ -9,7 +9,7 @@
       Title="Departs" Loaded="Page_Loaded">
 
     <Grid Background="#F4F4F4">
-        <DataGrid x:Name="DepartsTable" d:ItemsSource="{d:SampleData ItemCount=2}" Margin="205,100,205,20" ColumnWidth="*" AutoGenerateColumns="False" KeyUp="DepartsTable_KeyUp" />
+        <DataGrid x:Name="DepartsTable" d:ItemsSource="{d:SampleData ItemCount=2}" Margin="205,100,205,20" ColumnWidth="*" AutoGenerateColumns="False" PreviewKeyUp="DepartsTable_KeyDown" />
         <Button x:Name="ButtonDel" FontSize="15" Content="Удалить" HorizontalAlignment="Left" Margin="429,30,0,0" VerticalAlignment="Top" Foreground="White" Height="30" Width="120" Background="#34495E" RenderTransformOrigin="0.067,-7.1" Click="ButtonDel_Click" />
         <Button x:Name="ButtonNew" FontSize="15" Content="Добавить" HorizontalAlignment="Left" Margin="245,30,0,0" VerticalAlignment="Top" Foreground="White" Height="30" Width="120" Background="#34495E" Click="ButtonNew_Click" />
     </Grid>

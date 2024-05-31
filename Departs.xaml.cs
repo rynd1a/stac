@@ -16,7 +16,7 @@ namespace stac
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            Connect.Table_Fill("Depart", "select id as Номер, name as Наименование from department");
+            Connect.Table_Fill("Depart", "select id as Номер, name as Наименование from department order by id");
             DepartsTable.ItemsSource = Connect.ds.Tables["Depart"].DefaultView;
             DepartsTable.AutoGenerateColumns = true;
             DepartsTable.HeadersVisibility = DataGridHeadersVisibility.Column;
@@ -24,47 +24,49 @@ namespace stac
             DepartsTable.Columns[0].IsReadOnly = true;
         }
 
-        private void DepartsTable_KeyUp(object sender, KeyEventArgs e)
+        private void DepartsTable_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter)
+            if (e.Key != Key.Enter) return;
+            
+            string result;
+            string sql;
+                
+            int id = DepartsTable.SelectedIndex;
+            DataRowView row = (DataRowView)DepartsTable.Items[id - 1];
+            MessageBoxButton buttons = MessageBoxButton.YesNo;
+
+            if (id == -1) MessageBox.Show("Выберите строку!");
+
+            result = MessageBox.Show("Применить изменения?", "Изменения", buttons).ToString();
+            if (result == "No") return;
+            else if (result == "Yes")
             {
-                string result;
-                string sql;
-                DataRowView row = (DataRowView)DepartsTable.SelectedItems[0];
-                int id = DepartsTable.SelectedIndex;
-                MessageBoxButton buttons = MessageBoxButton.YesNo;
-
-                if (id == -1) MessageBox.Show("Выберите строку!");
-
-                result = MessageBox.Show("Применить изменения?", "Изменения", buttons).ToString();
-                if (result == "No") return;
-                else if (result == "Yes")
+                if (row["Наименование"].ToString() == "")
                 {
-                    if (row["Наименование"].ToString() == "")
-                    {
-                        MessageBox.Show("Наименование отделения является обязательным для заполнения", "Внимание");
+                    MessageBox.Show("Наименование отделения является обязательным для заполнения", "Внимание");
+                    return;
+                }
+
+                if (row["Номер"].ToString() != "")
+                {
+                    sql = "update department set name='" +
+                    row["Наименование"] + 
+                    "' where id = " + row["Номер"];
+
+                    if (!Connect.Modification_Execute(sql))
                         return;
-                    }
-
-                    if (row["Номер"].ToString() != "")
-                    {
-                        sql = "update department set name='" +
-                        row["Наименование"] + 
-                        "' where id = " + row["Номер"];
-
-                        if (!Connect.Modification_Execute(sql))
-                            return;
-                        NavigationService.Navigate(new Departs());
-                    }
-                    else
-                    {
-                        sql = "insert into department(name) values('" + row["Наименование"] + "')";
-                        if (!Connect.Modification_Execute(sql))
-                            return;
-                        NavigationService.Navigate(new Departs());
-                    }
+                    NavigationService.Navigate(new Departs());
+                }
+                else
+                {
+                    sql = "insert into department(name) values('" + row["Наименование"] + "')";
+                    if (!Connect.Modification_Execute(sql))
+                        return;
+                    NavigationService.Navigate(new Departs());
                 }
             }
+            
+            e.Handled = true;
         }
         private void ButtonDel_Click(object sender, RoutedEventArgs e)
         {

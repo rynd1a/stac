@@ -29,33 +29,39 @@ namespace stac
         {
             for (int i = 0; i < Connect.ds.Tables["User"].Rows.Count; i++)
             {
-                if ((loginTextBox.Text == Connect.ds.Tables["User"].Rows[i]["Логин"].ToString()) && (PasswordBox.Password == Connect.ds.Tables["User"].Rows[i]["Пароль"].ToString()))
+                if ((loginTextBox.Text == Connect.ds.Tables["User"].Rows[i]["Логин"].ToString()))
                 {
-                    if (Connect.ds.Tables["User"].Rows[i]["Тип"].ToString() == "Администратор")
+                    Connect.Table_Fill("Pas", "select password = crypt('" + PasswordBox.Password + "', password) as pas from users where login ='" + loginTextBox.Text + "'");
+                    if (Connect.ds.Tables["Pas"].Rows[0]["pas"].ToString() == "True")
                     {
-                        this.Hide();
-                        Admin admin = new Admin();
-                        admin.Show();
-                        this.Close();
-                        return;
-                    }
-                    else if (Connect.ds.Tables["User"].Rows[i]["Тип"].ToString() != "Администратор")
-                    {
-                        Connect.Table_Fill("UserVrach", "select * from medic_user where user_id = " + Connect.ds.Tables["User"].Rows[i]["Номер"].ToString());
+                        if (Connect.ds.Tables["User"].Rows[i]["Тип"].ToString() == "Администратор")
+                        {
+                            this.Hide();
+                            Admin admin = new Admin();
+                            admin.Show();
+                            this.Close();
+                            return;
+                        }
+                        else if (Connect.ds.Tables["User"].Rows[i]["Тип"].ToString() != "Администратор")
+                        {
+                            Connect.Table_Fill("UserVrach", "select * from medic_user where user_id = " + Connect.ds.Tables["User"].Rows[i]["Номер"].ToString());
 
-                        if (Connect.ds.Tables["UserVrach"].Rows.Count > 0) id_userVrach = Connect.ds.Tables["UserVrach"].Rows[0]["medic_id"].ToString();
+                            if (Connect.ds.Tables["UserVrach"].Rows.Count > 0) id_userVrach = Connect.ds.Tables["UserVrach"].Rows[0]["medic_id"].ToString();
 
-                        this.Hide();
-                        Employee employee = new Employee();
-                        employee.Show();
-                        this.Close();
-                        return;
+                            this.Hide();
+                            Employee employee = new Employee();
+                            employee.Show();
+                            this.Close();
+                            return;
+                        }
                     }
+
                 }
             }
             MessageBox.Show("Неверно введены логин или пароль!", "Ошибка");
             PasswordBox.Password = "";
         }
+    
 
         private void loginTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
@@ -79,28 +85,33 @@ namespace stac
             {
                 for (int i = 0; i < Connect.ds.Tables["User"].Rows.Count; i++)
                 {
-                    if ((loginTextBox.Text == Connect.ds.Tables["User"].Rows[i]["Логин"].ToString()) && (PasswordBox.Password == Connect.ds.Tables["User"].Rows[i]["Пароль"].ToString()))
+                    if ((loginTextBox.Text == Connect.ds.Tables["User"].Rows[i]["Логин"].ToString()))
                     {
-                        if (Connect.ds.Tables["User"].Rows[i]["Тип"].ToString() == "Администратор")
+                        Connect.Table_Fill("Pas", "select password = crypt('" + PasswordBox.Password + "', password) as pas from users where login ='" + loginTextBox.Text + "'");
+                        if (Connect.ds.Tables["Pas"].Rows[0]["pas"].ToString() == "True")
                         {
-                            this.Hide();
-                            Admin admin = new Admin();
-                            admin.Show();
-                            this.Close();
-                            return;
-                        }
-                        else if (Connect.ds.Tables["User"].Rows[i]["Тип"].ToString() != "Администратор")
-                        {
-                            Connect.Table_Fill("UserVrach", "select * from medic_user where user_id = " + Connect.ds.Tables["User"].Rows[i]["Номер"].ToString());
+                            if (Connect.ds.Tables["User"].Rows[i]["Тип"].ToString() == "Администратор")
+                            {
+                                this.Hide();
+                                Admin admin = new Admin();
+                                admin.Show();
+                                this.Close();
+                                return;
+                            }
+                            else if (Connect.ds.Tables["User"].Rows[i]["Тип"].ToString() != "Администратор")
+                            {
+                                Connect.Table_Fill("UserVrach", "select * from medic_user where user_id = " + Connect.ds.Tables["User"].Rows[i]["Номер"].ToString());
 
-                            if (Connect.ds.Tables["UserVrach"].Rows.Count > 0) id_userVrach = Connect.ds.Tables["UserVrach"].Rows[0]["medic_id"].ToString();
+                                if (Connect.ds.Tables["UserVrach"].Rows.Count > 0) id_userVrach = Connect.ds.Tables["UserVrach"].Rows[0]["medic_id"].ToString();
 
-                            this.Hide();
-                            Employee employee = new Employee();
-                            employee.Show();
-                            this.Close();
-                            return;
+                                this.Hide();
+                                Employee employee = new Employee();
+                                employee.Show();
+                                this.Close();
+                                return;
+                            }
                         }
+                        
                     }
                 }
                 MessageBox.Show("Неверно введены логин или пароль!", "Ошибка");

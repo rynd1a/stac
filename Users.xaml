@@ -9,7 +9,7 @@
       Title="Users" Loaded="Page_Loaded">
 
     <Grid Background="#F4F4F4">
-        <DataGrid x:Name="UsersTable" d:ItemsSource="{d:SampleData ItemCount=4}" Margin="205,129,205,61" ColumnWidth="*" AutoGenerateColumns="False" KeyUp="UsersTable_KeyUp" />
+        <DataGrid x:Name="UsersTable" d:ItemsSource="{d:SampleData ItemCount=4}" Margin="205,129,205,61" ColumnWidth="*" AutoGenerateColumns="False" PreviewKeyDown="UsersTable_KeyDown" />
         <Button x:Name="ButtonDel" FontSize="15" Content="Удалить" HorizontalAlignment="Left" Margin="429,30,0,0" VerticalAlignment="Top" Foreground="White" Height="30" Width="120" Background="#34495E" RenderTransformOrigin="0.067,-7.1" Click="ButtonDel_Click" />
         <Button x:Name="ButtonNew" FontSize="15" Content="Добавить" HorizontalAlignment="Left" Margin="245,30,0,0" VerticalAlignment="Top" Foreground="White" Height="30" Width="120" Background="#34495E" Click="ButtonNew_Click" />
         <Button x:Name="ButtonConnect" FontSize="15" Content="Привязать врача к пользователю" HorizontalAlignment="Left" Margin="245,80,0,0" VerticalAlignment="Top" Foreground="White" Height="30" Width="304" Background="#34495E" Click="ButtonConnect_Click" />
