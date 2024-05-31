@@ -9,7 +9,7 @@
       Title="Pacients" Loaded="Page_Loaded">
 
     <Grid Background="#F4F4F4">
-        <DataGrid x:Name="PacTable" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,40,176,28" ColumnWidth="*">
+        <DataGrid x:Name="PacTable" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,40,176,28" ColumnWidth="*" IsReadOnly="True">
             <DataGrid.ItemContainerStyle>
                 <Style TargetType="DataGridRow">
                     <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>

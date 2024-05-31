@@ -43,13 +43,6 @@ namespace stac
             PacTable.AutoGenerateColumns = true;
             PacTable.HeadersVisibility = DataGridHeadersVisibility.Column;
             PacTable.CanUserAddRows = false;
-            PacTable.Columns[0].IsReadOnly = true;
-            PacTable.Columns[1].IsReadOnly = true;
-            PacTable.Columns[2].IsReadOnly = true;
-            PacTable.Columns[3].IsReadOnly = true;
-            PacTable.Columns[4].IsReadOnly = true;
-            PacTable.Columns[5].IsReadOnly = true;
-            PacTable.Columns[6].IsReadOnly = true;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

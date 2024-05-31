@@ -52,15 +52,12 @@ namespace stac
             AdrTable.HeadersVisibility = DataGridHeadersVisibility.None;
             AdrTable.CanUserAddRows = false;
             AdrTable.Columns[0].Visibility = Visibility.Hidden;
-            AdrTable.Columns[0].IsReadOnly = true;
-            AdrTable.Columns[1].IsReadOnly = true;
 
             DocTable.ItemsSource = Connect.ds.Tables["UpdDoc"].DefaultView;
             DocTable.AutoGenerateColumns = true;
             DocTable.HeadersVisibility = DataGridHeadersVisibility.None;
             DocTable.CanUserAddRows = false;
             DocTable.Columns[0].Visibility = Visibility.Hidden;
-            DocTable.Columns[1].IsReadOnly = true;
         }
 
         private void AdrRow_DoubleClick(object sender, MouseButtonEventArgs e)

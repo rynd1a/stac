@@ -9,7 +9,7 @@
       Title="Medics" Loaded="Page_Loaded">
 
     <Grid Background="#F4F4F4">
-        <DataGrid x:Name="MedicsTable"  Margin="50,100,50,20" MaxColumnWidth="150" ColumnWidth="*">
+        <DataGrid x:Name="MedicsTable"  Margin="50,100,50,20" MaxColumnWidth="150" ColumnWidth="*" IsReadOnly="True">
             <DataGrid.ItemContainerStyle>
                 <Style TargetType="DataGridRow">
                     <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>

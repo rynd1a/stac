@@ -43,6 +43,9 @@ namespace stac
             return;
         }
 
-
+        private void ButReport_Click(object sender, RoutedEventArgs e)
+        {
+            FrameEmployee.Content = new Reports();
+        }
     }
 }

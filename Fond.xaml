@@ -9,7 +9,7 @@
       Title="Fond" Loaded="Page_Loaded">
 
     <Grid Background="#F4F4F4">
-        <DataGrid x:Name="Tabl" d:ItemsSource="{d:SampleData ItemCount=2}" Margin="155,56,155,30" ColumnWidth="*" SelectionChanged="Tabl_SelectionChanged" SelectedCellsChanged="Tabl_SelectedCellsChanged">
+        <DataGrid x:Name="Tabl" d:ItemsSource="{d:SampleData ItemCount=2}" IsReadOnly="True" Margin="155,56,155,30" ColumnWidth="*"  SelectedCellsChanged="Tabl_SelectedCellsChanged">
             <DataGrid.ItemContainerStyle>
                 <Style TargetType="DataGridRow">
                     <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>

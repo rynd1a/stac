@@ -91,11 +91,6 @@ namespace stac
             Tabl.HeadersVisibility = DataGridHeadersVisibility.Column;
             Tabl.CanUserAddRows = false;
             Tabl.Columns[1].Visibility = Visibility.Hidden;
-            Tabl.Columns[0].IsReadOnly = true;
-            Tabl.Columns[1].IsReadOnly = true;
-            Tabl.Columns[2].IsReadOnly = true;
-            Tabl.Columns[3].IsReadOnly = true;
-            Tabl.Columns[4].IsReadOnly = true;
             status = 1;
             ButtonBack.Visibility = Visibility.Hidden;
             ButtonAction.Visibility = Visibility.Hidden;
@@ -114,10 +109,6 @@ namespace stac
             Tabl.CanUserAddRows = false;
             Tabl.Columns[2].Visibility = Visibility.Hidden;
             Tabl.Columns[3].Visibility = Visibility.Hidden;
-            Tabl.Columns[0].IsReadOnly = true;
-            Tabl.Columns[1].IsReadOnly = true;
-            Tabl.Columns[4].IsReadOnly = true;
-            Tabl.Columns[5].IsReadOnly = true;
             status = 2;
             ButtonBack.Visibility = Visibility.Visible;
             ButtonAction.Visibility = Visibility.Hidden;
@@ -157,13 +148,6 @@ namespace stac
             createOrUpdateStacSluch.ShowDialog();
             Fill_BedPlace(id_fondPal);
             row = null;
-        }
-
-        
-
-        private void Tabl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            
         }
 
         private void Tabl_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)

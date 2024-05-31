@@ -30,11 +30,6 @@ namespace stac
             MedicsTable.AutoGenerateColumns = true;
             MedicsTable.HeadersVisibility = DataGridHeadersVisibility.Column;
             MedicsTable.CanUserAddRows = false;
-            MedicsTable.Columns[0].IsReadOnly = true;
-            MedicsTable.Columns[1].IsReadOnly = true;
-            MedicsTable.Columns[2].IsReadOnly = true;
-            MedicsTable.Columns[3].IsReadOnly = true;
-            MedicsTable.Columns[4].IsReadOnly = true;
         }
 
         private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
